@@ -23,9 +23,9 @@ public class Editgroupe extends AppCompatActivity {
         setContentView(R.layout.activity_editgroupe);
         nom_groupe = findViewById(R.id.nom_du_groupe_edit);
         niveau_groupe =findViewById(R.id.niveau_du_groupe_edit);
-        nom =getIntent().getExtras().getString("nom");
+        nom =getIntent().getExtras().getString("Nom");
         niveau = getIntent().getExtras().getString("niveau") ;
-        id_groupe = getIntent().getExtras().getString("id");
+        id_groupe = getIntent().getExtras().getString("Id");
         nom_groupe.setText(nom);
         niveau_groupe.setText(niveau);
         edit_groupe = findViewById(R.id.edit_groupe);
