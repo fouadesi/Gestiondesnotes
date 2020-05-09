@@ -3,53 +3,122 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:padding="10dp"
     android:layout_height="match_parent"
+    android:padding="10dp"
     tools:context=".Group_act">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/comfortaa_light"
+        android:text="FORMULE: "
+        android:textSize="30dp" />
+
+    <LinearLayout
+        android:id="@+id/formule_groupeAct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/test1_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_alternates"
+                android:text="TEST1 :"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/test2_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_alternates"
+                android:text="TEST2 :"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/absence_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_alternates"
+                android:text="ABSENCE :"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/participation_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_alternates"
+                android:text="PARTICIPATION :"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/title_groupe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/formule_groupeAct"
+        android:fontFamily="@font/comfortaa_light"
+        android:text=" GROUPES :"
+        android:textSize="30dp" />
+
     <ListView
-        android:divider="@null"
-        android:dividerHeight="0dip"
         android:id="@+id/list_view_groupes"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title_groupe"
+        android:layout_marginTop="3dp"
+        android:divider="@null"
+        android:dividerHeight="0dip" />
+
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/floating_action_menu"
-        app:menu_openDirection="up"
-        app:menu_fab_label=""
-       app:menu_colorNormal="@color/colorAccent"
         android:layout_width="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         app:menu_backgroundColor="@android:color/transparent"
-        app:menu_showShadow="true"
+        app:menu_colorNormal="@color/colorAccent"
+        app:menu_fab_label=""
         app:menu_labels_colorNormal="@color/colorAccent"
         app:menu_labels_textColor="@android:color/white"
-        android:layout_height="wrap_content" >
+        app:menu_openDirection="up"
+        app:menu_showShadow="true">
+
         <com.github.clans.fab.FloatingActionButton
-            app:fab_size="mini"
-            app:fab_colorPressed="@color/colorPrimary"
-            android:src="@drawable/add_groupe_icon"
             android:id="@+id/floating_action_button_add_groupe2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/add_groupe_icon"
             app:fab_colorNormal="@color/colorAccent"
+            app:fab_colorPressed="@color/colorPrimary"
             app:fab_label="Ajouter un groupe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            app:fab_size="mini" />
+
         <com.github.clans.fab.FloatingActionButton
-            app:fab_size="mini"
-            android:src="@drawable/add_formule_icon"
             android:id="@+id/item_ajouterformule"
-            app:fab_colorNormal="@color/colorAccent"
-            app:fab_label="Ajouter une formule"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:src="@drawable/add_formule_icon"
+            app:fab_colorNormal="@color/colorAccent"
+            app:fab_label="Modifier la formule"
+            app:fab_size="mini" />
 
     </com.github.clans.fab.FloatingActionMenu>
-
-
-
-
-
-
 
 
 </RelativeLayout>

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/comfortaa_light</item>
         <item>@font/dorsa</item>
         <item>@font/fredoka_one</item>
         <item>@font/life_savers</item>
+        <item>@font/montserrat_alternates</item>
         <item>@font/orienta</item>
         <item>@font/secular_one</item>
     </array>

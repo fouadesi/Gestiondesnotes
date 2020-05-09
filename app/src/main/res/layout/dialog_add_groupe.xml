@@ -23,6 +23,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:id="@+id/nom_groupe_dialog_bar"
+            android:fontFamily="@font/montserrat_alternates"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
@@ -40,6 +41,7 @@
         android:layout_height="wrap_content">
         <com.google.android.material.textfield.TextInputEditText
             android:inputType="number"
+            android:fontFamily="@font/montserrat_alternates"
             android:layout_width="match_parent"
             android:id="@+id/niveau_groupe_dialog_bar"
             android:layout_height="wrap_content" />

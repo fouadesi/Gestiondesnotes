@@ -1,29 +1,40 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
- android:background="@color/colorPrimary"
-    android:padding="10dp"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:padding="10dp">
     <!-- Main content -->
-            <ListView
-                android:layout_marginTop="?attr/actionBarSize"
-        android:divider="@null"
-        android:dividerHeight="0dip"
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/comfortaa_light"
+        android:padding="7dp"
+        android:text="MODULES:"
+        android:textSize="40dp" />
+
+
+    <ListView
         android:id="@+id/listview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_below="@id/title"
+        android:layout_marginTop="20dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="15.0sp"
+         />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floating_action_button_add_groupe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:src="@drawable/add_dialog"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:backgroundTint="@color/colorAccent" />
-
+        android:layout_alignParentBottom="true"
+        android:layout_margin="15dp"
+        android:backgroundTint="@color/colorAccent"
+        android:src="@drawable/ic_more" />
 
 </RelativeLayout>

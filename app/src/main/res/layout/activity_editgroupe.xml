@@ -9,6 +9,7 @@
     <EditText
         android:layout_marginTop="20dp"
         android:padding="10dp"
+        android:fontFamily="@font/montserrat_alternates"
         android:background="@drawable/search_outline"
         android:hint="Entrer le nom du groupe "
         android:layout_width="match_parent"
@@ -19,6 +20,7 @@
         android:background="@drawable/search_outline"
         android:layout_marginTop="10dp"
         android:hint="Entrer le nom du groupe "
+        android:fontFamily="@font/montserrat_alternates"
         android:layout_width="match_parent"
         android:id="@+id/niveau_du_groupe_edit"
         android:layout_height="wrap_content" />
@@ -27,6 +29,7 @@
         android:id="@+id/edit_groupe"
         android:layout_marginTop="20dp"
         android:text="Edit Groupe"
+        android:fontFamily="@font/montserrat_alternates"
         android:layout_width="200dp"
         android:layout_height="wrap_content" />
 
