@@ -21,7 +21,6 @@
         android:layout_marginTop="3dp"
         android:divider="@android:color/transparent"
         android:dividerHeight="15.0sp" />
-
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/floating_action_menu"
         android:layout_width="wrap_content"
