@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="180dp"
     android:elevation="10dp"
-    android:paddingTop="20dp"
+    android:paddingTop="21dp"
     android:background="@drawable/bg">
 <!--    <View-->
 <!--        android:background="@color/colorAccent"-->
