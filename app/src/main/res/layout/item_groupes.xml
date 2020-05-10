@@ -28,7 +28,7 @@
         android:textSize="15sp" />
     <ImageButton
         android:layout_marginTop="70dp"
-        android:layout_marginEnd="240dp"
+        android:layout_marginEnd="220dp"
         android:layout_alignParentEnd="true"
         android:id="@+id/delete_groupe_icon_listview"
         android:layout_width="wrap_content"
@@ -36,7 +36,7 @@
         android:background="@drawable/ic_trash" />
     <ImageButton
         android:layout_marginTop="70dp"
-        android:layout_marginEnd="320dp"
+        android:layout_marginEnd="300dp"
         android:layout_alignParentEnd="true"
         android:id="@+id/update_groupe_listview"
         android:layout_width="wrap_content"
