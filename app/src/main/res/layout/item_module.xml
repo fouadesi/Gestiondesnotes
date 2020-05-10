@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="180dp"
     android:elevation="10dp"
-    android:paddingTop="21dp"
+    android:paddingTop="20dp"
     android:background="@drawable/bg">
 <!--    <View-->
 <!--        android:background="@color/colorAccent"-->
 <!--        android:layout_marginTop="1dp"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="1dp" />-->
+<!--    added a comment-->
     <TextView
         android:id="@+id/nom_du_module_listview"
         android:layout_width="wrap_content"
