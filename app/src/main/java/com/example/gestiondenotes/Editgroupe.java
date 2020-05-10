@@ -35,7 +35,7 @@ public class Editgroupe extends AppCompatActivity {
                 nom = nom_groupe.getText().toString();
                 niveau = niveau_groupe.getText().toString();
                 if (nom.isEmpty() || niveau.isEmpty()) {
-                    Toast.makeText(Editgroupe.this,"Vous devez remplir ce champ",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Editgroupe.this,"Vous deve remplir ce champ",Toast.LENGTH_SHORT).show();
                 } else {
                     Groupes gr = new Groupes(nom,niveau);
                     gr.setId(id_groupe);
