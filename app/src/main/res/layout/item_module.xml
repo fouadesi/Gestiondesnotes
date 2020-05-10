@@ -39,7 +39,7 @@
         android:textSize="15sp" />
 
 
-
+<!--Yadra hjkfjhfgjhkfkg-->
 
     <ImageButton
         android:id="@+id/delete_icon_listview"
