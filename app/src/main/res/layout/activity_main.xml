@@ -6,6 +6,10 @@
     android:background="@color/colorPrimary"
     android:padding="10dp">
     <!-- Main content -->
+    <include
+     android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        />
 
     <TextView
         android:id="@+id/title"
