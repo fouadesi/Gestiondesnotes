@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat_alternates"
-        android:text="Nom :"
+        android:text="Group :"
         android:textColor="@android:color/black"
         android:textSize="20dp" />
     <TextView
