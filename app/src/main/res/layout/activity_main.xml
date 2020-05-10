@@ -26,15 +26,30 @@
         android:divider="@android:color/transparent"
         android:dividerHeight="15.0sp"
          />
+    <com.github.clans.fab.FloatingActionMenu
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        app:menu_backgroundColor="@android:color/transparent"
+        app:menu_colorNormal="@color/colorAccent"
+        app:menu_fab_label=""
+        app:menu_labels_colorNormal="@color/colorAccent"
+        app:menu_labels_textColor="@android:color/white"
+        app:menu_openDirection="up"
+        app:menu_showShadow="true">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <com.github.clans.fab.FloatingActionButton
         android:id="@+id/floating_action_button_add_groupe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="15dp"
-        android:backgroundTint="@color/colorAccent"
-        android:src="@drawable/ic_more" />
+        android:src="@drawable/add_groupe_icon"
+        app:fab_colorNormal="@color/colorAccent"
+        app:fab_colorPressed="@color/colorPrimary"
+        app:fab_label="Ajouter un Module"
+        app:fab_size="mini" />
+    </com.github.clans.fab.FloatingActionMenu>
+
+
 
 </RelativeLayout>

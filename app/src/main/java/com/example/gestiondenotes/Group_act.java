@@ -31,10 +31,8 @@ public class Group_act extends AppCompatActivity {
     DatabaseReference mDatabase;
     FloatingActionButton add_formule;
    static String key;
-    ListView listView,listView2;
+    ListView listView;
     ArrayList<Groupes> groupes_users;
-    ArrayList<Formule> formules ;
-    TextView formule_teste1,formule_teste2 ,formule_participation,formule_absence ;
     static String _test1 ;static  String _test2 ;
   static   String _participation ;
   static  String _absence;

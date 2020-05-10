@@ -36,34 +36,55 @@ public class EtudiantAct extends AppCompatActivity {
     public static String key_g ;
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_etudiant);
+
         toolbar = findViewById(R.id.toolbar) ;
+
         viewPager = findViewById(R.id.view_pager) ;
+
         tabLayout = findViewById(R.id.tab_layout);
+
         key_g = getIntent().getExtras().getString("ID");
+
         fragmentActivity1 = new Fragment1();
+
         fragmentActivity2 = new Fragment2() ;
+
         fragmentActivity3 = new Fragment3() ;
+
         fragmentActivity4 = new Fragment4();
+
         tabLayout.setupWithViewPager(viewPager);
+
         ViewPagerAdapter viewpageradapter = new ViewPagerAdapter(getSupportFragmentManager(),0) ;
+
         viewpageradapter.Addfragment(fragmentActivity2,"Liste des etudiants");
+
         viewpageradapter.Addfragment(fragmentActivity1,"Ajouter un etudiant");
+
         viewpageradapter.Addfragment(fragmentActivity3,"Marquer les Absence");
+
         viewpageradapter.Addfragment(fragmentActivity4,"Ajouter La participation");
+
 
         viewPager.setAdapter(viewpageradapter);
     }
 
 
     public class ViewPagerAdapter extends FragmentPagerAdapter {
+
         private List<Fragment> fragment = new ArrayList<>();
+
         private List<String> FragmentTitle = new ArrayList<>();
+
         public ViewPagerAdapter(@NonNull FragmentManager fm) {
             super(fm);
         }
+
         public ViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
             super(fm, behavior);
         }
