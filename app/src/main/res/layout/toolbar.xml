@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.Toolbar
+android:background="@color/colorAccent"
+   app:title="Modules"
+    app:titleMargin="0dp"
+    android:contentInsetStart="0dp"
+    app:contentInsetStart="0dp"
+    app:titleMarginStart="0dp"
+    app:titleTextColor="@color/colorPrimary"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="20dp">
-
+    android:layout_height="?attr/actionBarSize"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 </androidx.appcompat.widget.Toolbar>

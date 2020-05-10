@@ -13,6 +13,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.FirebaseDatabase;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.Menu;
@@ -24,7 +25,11 @@ import android.widget.ListView;
 import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import com.github.clans.fab.FloatingActionButton ;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -45,13 +50,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Button btn;
     DatabaseReference mDatabase;
     ArrayList<Module_users> module_users;
+    private DrawerLayout drawer;
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.ex_menu, menu);
-        return true;
-    }
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater menuInflater = getMenuInflater();
+//        menuInflater.inflate(R.menu.ex_menu, menu);
+//        return true;
+//    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -66,6 +73,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         return true;
     }
+    @Override
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,8 +89,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         mAuth = FirebaseAuth.getInstance();
         toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("");
+
         setSupportActionBar(toolbar);
+        drawer = findViewById(R.id.drawer);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
 
 
         // tester l'utilisateur si il est connecte

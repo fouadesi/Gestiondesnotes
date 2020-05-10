@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_message"
+            android:icon="@drawable/groupe_icon"
+            android:title="Acceuil" />
+        <item
+            android:id="@+id/nav_chat"
+            android:icon="@drawable/file_ic"
+            android:title="Fichier type Exel" />
+        <item
+            android:id="@+id/deconnecter"
+            android:icon="@drawable/disconnect_ic"
+            android:title="Se déconnecter" />
+    </group>
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/shortcut"
+                android:icon="@drawable/help_ic"
+                android:title="Aide" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/settings_ic"
+                android:title="Paramètres" />
+        </menu>
+    </item>
+</menu>
