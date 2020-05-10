@@ -9,8 +9,9 @@ public class Etudiant {
  private String note1 ,note2 ;
  private String ID ;
  String picture ;
+ private String Participation ;
 
- public Etudiant(String nom, String prenom, String NI, String abscence, String email, String note1, String note2,  String picture) {
+ public Etudiant(String nom, String prenom, String NI, String abscence, String email, String note1, String note2,  String picture,String Participation) {
   Nom = nom;
   Prenom = prenom;
   this.NI = NI;
@@ -20,6 +21,15 @@ public class Etudiant {
   this.note2 = note2;
   this.ID = ID;
   this.picture = picture;
+  this.Participation = Participation ;
+ }
+
+ public String getParticipation() {
+  return Participation;
+ }
+
+ public void setParticipation(String participation) {
+  Participation = participation;
  }
 
  public String getAbscence() {

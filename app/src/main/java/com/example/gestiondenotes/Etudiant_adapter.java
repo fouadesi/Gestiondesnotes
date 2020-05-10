@@ -65,11 +65,6 @@ public class Etudiant_adapter extends ArrayAdapter<Etudiant> {
         } else {
             moy_etu.setText(" Moyenne : " + moyenne);
         }
-
-
-
-
-
         ImageButton supprimer_etudiant ;
          CircleImageView photo_etudiant ;
           photo_etudiant=  convertView.findViewById(R.id.profil_image);
@@ -114,6 +109,7 @@ public class Etudiant_adapter extends ArrayAdapter<Etudiant> {
                 i.putExtra("test2",etudiant.getNote2());
                 i.putExtra("photo",etudiant.getPicture());
                 i.putExtra("absence",etudiant.getAbscence()) ;
+                i.putExtra("participation",etudiant.getParticipation());
                 getContext().startActivity(i);
             }
         });

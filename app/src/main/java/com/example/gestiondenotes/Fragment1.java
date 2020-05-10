@@ -119,9 +119,10 @@ public class Fragment1 extends Fragment {
     TextInputEditText txt_prenom ;
   TextInputEditText txt_email ;
     TextInputEditText txt_ID ;
-    String PHOTO_DEFAULT = "https://firebasestorage.googleapis.com/" +
-            "v0/b/gestion-des-notes-57987.appspot.com/o/IMAGES_ETUDIANT%2Fe.j" +
-            "pg?alt=media&token=0d25d198-f42d-42b7-8b59-1c61fa95ef8d" ;
+    String PHOTO_DEFAULT = "https://firebasest" +
+            "orage.googleapis.com/v0/b/gestion-des-notes-57987.ap" +
+            "pspot.com/o/IMAGES_ETUDIANT%2Fanon" +
+            "ymity.jpg?alt=media&token=248fe5c2-6dc5-486c-9d8e-de2eef3813e3" ;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -250,6 +251,7 @@ public class Fragment1 extends Fragment {
                     e.setAbscence("0");
                     e.setNote1("0");
                     e.setNote2("0");
+                    e.setParticipation("0");
                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
                     ref.child("Module_users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).
                             child(Group_act.id_module).child("Groupes").child(EtudiantAct.key_g).

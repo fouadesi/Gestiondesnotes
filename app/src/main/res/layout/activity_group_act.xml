@@ -6,76 +6,13 @@
     android:layout_height="match_parent"
     android:padding="10dp"
     tools:context=".Group_act">
-
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/comfortaa_light"
-        android:text="FORMULE: "
-        android:textSize="30dp" />
-
-    <LinearLayout
-        android:id="@+id/formule_groupeAct"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/title"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/test1_list"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_alternates"
-                android:text="TEST1 :"
-                android:textColor="@android:color/black"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/test2_list"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_alternates"
-                android:text="TEST2 :"
-                android:textColor="@android:color/black"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/absence_list"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_alternates"
-                android:text="ABSENCE :"
-                android:textColor="@android:color/black"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/participation_list"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_alternates"
-                android:text="PARTICIPATION :"
-                android:textColor="@android:color/black"
-                android:textSize="16sp" />
-        </LinearLayout>
-    </LinearLayout>
-
     <TextView
         android:id="@+id/title_groupe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/formule_groupeAct"
         android:fontFamily="@font/comfortaa_light"
         android:text=" GROUPES :"
         android:textSize="30dp" />
-
     <ListView
         android:id="@+id/list_view_groupes"
         android:layout_width="match_parent"
@@ -83,7 +20,7 @@
         android:layout_below="@+id/title_groupe"
         android:layout_marginTop="3dp"
         android:divider="@null"
-        android:dividerHeight="0dip" />
+        android:dividerHeight="5dip" />
 
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/floating_action_menu"

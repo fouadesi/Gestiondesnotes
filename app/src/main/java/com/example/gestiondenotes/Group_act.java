@@ -35,36 +35,31 @@ public class Group_act extends AppCompatActivity {
     ArrayList<Groupes> groupes_users;
     ArrayList<Formule> formules ;
     TextView formule_teste1,formule_teste2 ,formule_participation,formule_absence ;
-    static String _test1 ;
-   static  String _test2 ;
+    static String _test1 ;static  String _test2 ;
   static   String _participation ;
   static  String _absence;
+     String test1 ;
+     String test2 ;
+     String participation ;
+     String absence ;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
          super.onCreate(savedInstanceState);
          setContentView(R.layout.activity_group_act);
-         formule_absence = findViewById(R.id.absence_list);
-         formule_teste1 = findViewById(R.id.test1_list) ;
-         formule_teste2 = findViewById(R.id.test2_list);
-         formule_participation = findViewById(R.id.participation_list);
+
         _test1 = getIntent().getExtras().getString("test1");
         _test2 = getIntent().getExtras().getString("test2");
         _participation = getIntent().getExtras().getString("participation");
         _absence = getIntent().getExtras().getString("absence");
 
 
-     final   String test1 = getIntent().getExtras().getString("test1");
-      final  String test2 = getIntent().getExtras().getString("test2");
-      final  String participation = getIntent().getExtras().getString("participation");
-       final String absence = getIntent().getExtras().getString("absence");
-
-        formule_teste1.setText("TEST1 : " + test1 + " %");
-        formule_teste2.setText("TEST2 : " + test2 + " %");
-        formule_absence.setText("ABSENCE : " + absence + " %");
-        formule_participation.setText("PARTICIPATION : " + participation + " %");
-
+        test1 = getIntent().getExtras().getString("test1");
+        test2 = getIntent().getExtras().getString("test2");
+        participation = getIntent().getExtras().getString("participation");
+    absence = getIntent().getExtras().getString("absence");
 
          id_module   =  getIntent().getExtras().getString("id");
          listView    =  findViewById(R.id.list_view_groupes);
@@ -93,7 +88,7 @@ public class Group_act extends AppCompatActivity {
                         final String Test1_edi = Test1.getText().toString().trim();
                         final String Test2_edi = Test2.getText().toString().trim();
                         final String Absence_edi = Absence.getText().toString().trim();
-                        String Participation_edi = Participation.getText().toString();
+                        final String Participation_edi = Participation.getText().toString();
 
                         if (Test1_edi.isEmpty() || Test2_edi.isEmpty() || Absence_edi.isEmpty() || Participation_edi.isEmpty()) {
                             final Snackbar s = Snackbar.make(findViewById(android.R.id.content),
@@ -139,13 +134,15 @@ public class Group_act extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                              if (task.isSuccessful()) {
-                                 _test1= Test1_edi ;
-                                 _test2 = Test2_edi ;
-                                 _absence = Absence_edi ;
-                                 formule_teste1.setText("TEST1 : " + f.getTest1()+ " %");
-                                 formule_teste2.setText("TEST2 : " + f.getTest2()+ " %");
-                                 formule_absence.setText("ABSENCE : " + " - " +f.getAbscence()+ " / abs");
-                                 formule_participation.setText("PARTICIPATION : " + "+ " + f.getParticipation() +" / Par");
+                                 _test1= Test1_edi;
+                                 _test2 = Test2_edi;
+                                 _absence = Absence_edi;
+                                 _participation = Participation_edi;
+                                 test1 = Test1_edi ;
+                                 test2 = Test2_edi ;
+                                 absence = Absence_edi ;
+                                 participation = Participation_edi  ;
+
                                  final Snackbar s = Snackbar.make(findViewById(android.R.id.content),
                                          "Bien inserer", Snackbar.LENGTH_LONG);
                                  s.setDuration(10000);

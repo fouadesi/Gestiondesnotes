@@ -29,6 +29,7 @@ public class EtudiantAct extends AppCompatActivity {
     private Fragment1 fragmentActivity1 ;
     private Fragment2 fragmentActivity2 ;
     private  Fragment3 fragmentActivity3 ;
+    private Fragment4 fragmentActivity4 ;
     private Toolbar toolbar ;
     private ViewPager viewPager ;
     private TabLayout tabLayout ;
@@ -45,11 +46,13 @@ public class EtudiantAct extends AppCompatActivity {
         fragmentActivity1 = new Fragment1();
         fragmentActivity2 = new Fragment2() ;
         fragmentActivity3 = new Fragment3() ;
+        fragmentActivity4 = new Fragment4();
         tabLayout.setupWithViewPager(viewPager);
         ViewPagerAdapter viewpageradapter = new ViewPagerAdapter(getSupportFragmentManager(),0) ;
         viewpageradapter.Addfragment(fragmentActivity2,"Liste des etudiants");
         viewpageradapter.Addfragment(fragmentActivity1,"Ajouter un etudiant");
         viewpageradapter.Addfragment(fragmentActivity3,"Marquer les Absence");
+        viewpageradapter.Addfragment(fragmentActivity4,"Ajouter La participation");
 
         viewPager.setAdapter(viewpageradapter);
     }
