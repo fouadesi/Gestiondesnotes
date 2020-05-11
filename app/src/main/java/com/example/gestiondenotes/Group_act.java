@@ -1,7 +1,10 @@
 package com.example.gestiondenotes;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -40,6 +43,9 @@ public class Group_act extends AppCompatActivity {
      String test2 ;
      String participation ;
      String absence ;
+    private DrawerLayout drawer;
+    private Toolbar toolbar ;
+
 
 
 
@@ -47,6 +53,15 @@ public class Group_act extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
          super.onCreate(savedInstanceState);
          setContentView(R.layout.activity_group_act);
+        toolbar = findViewById(R.id.toolbar_groupes);
+        toolbar.setTitle("Groupes");
+        toolbar.setSubtitle("Bienvenue");
+        setSupportActionBar(toolbar);
+        drawer = findViewById(R.id.drawer_groupeAct);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
 
         _test1 = getIntent().getExtras().getString("test1");
         _test2 = getIntent().getExtras().getString("test2");
