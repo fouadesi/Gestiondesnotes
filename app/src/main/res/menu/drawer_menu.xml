@@ -16,7 +16,7 @@
             android:icon="@drawable/disconnect_ic"
             android:title="Se déconnecter" />
     </group>
-    <item android:title="Communicate">
+    <item android:title="Option">
         <menu>
             <item
                 android:id="@+id/shortcut"
