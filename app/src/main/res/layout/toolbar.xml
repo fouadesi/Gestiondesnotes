@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.Toolbar
 android:background="@color/colorAccent"
-   app:title="Modules"
     app:titleMargin="0dp"
     android:contentInsetStart="0dp"
     app:contentInsetStart="0dp"

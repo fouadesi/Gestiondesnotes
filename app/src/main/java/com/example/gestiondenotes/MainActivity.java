@@ -89,7 +89,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         mAuth = FirebaseAuth.getInstance();
         toolbar = findViewById(R.id.toolbar);
-
+        toolbar.setTitle("Modules");
+        toolbar.setSubtitle("Bienvenue");
         setSupportActionBar(toolbar);
         drawer = findViewById(R.id.drawer);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
