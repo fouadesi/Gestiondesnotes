@@ -53,6 +53,7 @@ public class moduleadapter extends ArrayAdapter<Module_users> {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getContext(),Group_act.class);
+                i.putExtra("nom",module_users.getNom());
                 i.putExtra("id",module_users.getId());
                 i.putExtra("test1", module_users.formule.getTest1()) ;
                 i.putExtra("test2", module_users.formule.getTest2()) ;

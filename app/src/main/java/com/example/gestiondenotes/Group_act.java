@@ -54,8 +54,10 @@ public class Group_act extends AppCompatActivity {
          super.onCreate(savedInstanceState);
          setContentView(R.layout.activity_group_act);
         toolbar = findViewById(R.id.toolbar_groupes);
+
+        String nom_module = getIntent().getExtras().getString("nom");
         toolbar.setTitle("Groupes");
-        toolbar.setSubtitle("Bienvenue");
+        toolbar.setSubtitle("Module : " + nom_module );
         setSupportActionBar(toolbar);
         drawer = findViewById(R.id.drawer_groupeAct);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
