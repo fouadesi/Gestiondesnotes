@@ -33,8 +33,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="help_ic" />
-                            <entry key="sourceFile" value="C:\Users\DELL\Downloads\registration.svg" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="outputName" value="ic_gmail" />
+                            <entry key="sourceFile" value="C:\Users\DELL\Downloads\gmail.svg" />
                           </map>
                         </option>
                       </PersistentState>
