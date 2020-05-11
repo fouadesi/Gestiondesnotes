@@ -7,6 +7,7 @@
         <menu>
             <item android:title="Ajouter un module"
                    android:icon="@drawable/add_groupe_icon"
+
                 />
             <item android:title="Statistique"
                 android:icon="@drawable/staticicon_24dp"
