@@ -20,7 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar ;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -50,20 +50,6 @@ import jxl.Workbook;
 import jxl.read.biff.BiffException;
 
 public class EtudiantAct extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-<<<<<<< HEAD
-    private Fragment1 fragmentActivity1;
-    private Fragment2 fragmentActivity2;
-    private Fragment3 fragmentActivity3;
-    private Fragment4 fragmentActivity4;
-    private Toolbar toolbar;
-    private ViewPager viewPager;
-    private TabLayout tabLayout;
-    public static String key_g;
-    DrawerLayout drawer;
-
-    @Override
-
-=======
     private Fragment1 fragmentActivity1 ;
     private Fragment2 fragmentActivity2 ;
     private  Fragment3 fragmentActivity3 ;
@@ -74,8 +60,7 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
     public static String key_g ;
     DrawerLayout drawer ;
 
-        @Override
->>>>>>> 0b60e4c279e668118c56f98861d940866ac8f8d9
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.ex_menu, menu);
@@ -85,11 +70,11 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.import{
+            case R.id.import_: {
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
-                intent.setType("*/*");
-                startActivityForResult(intent, 0);
+                intent.setType("/");
+                startActivityForResult(intent , 0 );
 
             }
 
@@ -100,74 +85,38 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
         }
         return true;
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 0) {
 
-<<<<<<< HEAD
-            String path = data.getData().getPath();
+            String path = Environment.getRootDirectory() + data.getData().getPath();
+
             Toast.makeText(EtudiantAct.this, path, Toast.LENGTH_LONG).show();
-
-
-=======
->>>>>>> 0b60e4c279e668118c56f98861d940866ac8f8d9
-            String path  = Environment.getRootDirectory() + data.getData().getPath();
-
-                  Toast.makeText(EtudiantAct.this,path,Toast.LENGTH_LONG).show();
             try {
                 FileInputStream fileInputStream = new FileInputStream(path);
 
             } catch (FileNotFoundException ex) {
-                Toast.makeText(EtudiantAct.this,"pas de fichier",Toast.LENGTH_LONG).show();
+                Toast.makeText(EtudiantAct.this, "pas de fichier", Toast.LENGTH_LONG).show();
             }
-<<<<<<< HEAD
->>>>>>> 0b60e4c279e668118c56f98861d940866ac8f8d9
-=======
->>>>>>> 0b60e4c279e668118c56f98861d940866ac8f8d9
             File file = new File(path);
             try {
                 Workbook wb = Workbook.getWorkbook(file);
                 Sheet s = wb.getSheet(0);
-            }catch (IOException | BiffException Ex) {
-             Toast.makeText(EtudiantAct.this,"hhhh,",Toast.LENGTH_LONG).show();
+            } catch (IOException | BiffException Ex) {
+                Toast.makeText(EtudiantAct.this, "hhhh,", Toast.LENGTH_LONG).show();
             }
-<<<<<<< HEAD
-<<<<<<< HEAD
-            Sheet s;
-
-            s = wb.getSheet(0);
-=======
-
->>>>>>> 0b60e4c279e668118c56f98861d940866ac8f8d9
-
-            
-
-<<<<<<< HEAD
-=======
->>>>>>>parent of aee161e...add import exel activity
-=======
->>>>>>> 0b60e4c279e668118c56f98861d940866ac8f8d9
-=======
-
-
-            
-
->>>>>>> 0b60e4c279e668118c56f98861d940866ac8f8d9
 
 
         }
 
 
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_etudiant);
-
         String gr = getIntent().getExtras().getString("nom");
         toolbar = findViewById(R.id.toolbar_etu);
         setSupportActionBar(toolbar);
@@ -181,7 +130,8 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
         toggle.syncState();
 
 
-        viewPager = findViewById(R.id.view_pager);
+
+        viewPager = findViewById(R.id.view_pager) ;
 
         tabLayout = findViewById(R.id.tab_layout);
 
@@ -189,9 +139,9 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
 
         fragmentActivity1 = new Fragment1();
 
-        fragmentActivity2 = new Fragment2();
+        fragmentActivity2 = new Fragment2() ;
 
-        fragmentActivity3 = new Fragment3();
+        fragmentActivity3 = new Fragment3() ;
 
         fragmentActivity4 = new Fragment4();
 
@@ -200,15 +150,15 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
         navigationView.setNavigationItemSelectedListener(this);
 
 
-        ViewPagerAdapter viewpageradapter = new ViewPagerAdapter(getSupportFragmentManager(), 0);
+        ViewPagerAdapter viewpageradapter = new ViewPagerAdapter(getSupportFragmentManager(),0) ;
 
-        viewpageradapter.Addfragment(fragmentActivity2, "Liste des etudiants");
+        viewpageradapter.Addfragment(fragmentActivity2,"Liste des etudiants");
 
-        viewpageradapter.Addfragment(fragmentActivity1, "Ajouter un etudiant");
+        viewpageradapter.Addfragment(fragmentActivity1,"Ajouter un etudiant");
 
-        viewpageradapter.Addfragment(fragmentActivity3, "Marquer les Absence");
+        viewpageradapter.Addfragment(fragmentActivity3,"Marquer les Absence");
 
-        viewpageradapter.Addfragment(fragmentActivity4, "Ajouter La participation");
+        viewpageradapter.Addfragment(fragmentActivity4,"Ajouter La participation");
 
 
         viewPager.setAdapter(viewpageradapter);
@@ -221,7 +171,7 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
                 finish();
 
                 break;
-            case R.id.deconnecter:
+            case R.id.deconnecter :
                 FirebaseAuth mAuth = FirebaseAuth.getInstance();
                 mAuth.signOut();
             default:
@@ -254,18 +204,15 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
         public int getCount() {
             return fragment.size();
         }
-
         @NonNull
         @Override
         public Fragment getItem(int position) {
             return fragment.get(position);
         }
-
         public void Addfragment(Fragment fra, String title) {
             fragment.add(fra);
             FragmentTitle.add(title);
         }
-
         @Nullable
         @Override
         public CharSequence getPageTitle(int position) {
