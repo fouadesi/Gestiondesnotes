@@ -90,26 +90,22 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 0) {
 
-            String path  = Environment.getRootDirectory() + data.getData().getPath();
+            String path = Environment.getRootDirectory() + data.getData().getPath();
 
-                  Toast.makeText(EtudiantAct.this,path,Toast.LENGTH_LONG).show();
+            Toast.makeText(EtudiantAct.this, path, Toast.LENGTH_LONG).show();
             try {
                 FileInputStream fileInputStream = new FileInputStream(path);
 
             } catch (FileNotFoundException ex) {
-                Toast.makeText(EtudiantAct.this,"pas de fichier",Toast.LENGTH_LONG).show();
+                Toast.makeText(EtudiantAct.this, "pas de fichier", Toast.LENGTH_LONG).show();
             }
             File file = new File(path);
             try {
                 Workbook wb = Workbook.getWorkbook(file);
                 Sheet s = wb.getSheet(0);
-            }catch (IOException | BiffException Ex) {
-             Toast.makeText(EtudiantAct.this,"hhhh,",Toast.LENGTH_LONG).show();
+            } catch (IOException | BiffException Ex) {
+                Toast.makeText(EtudiantAct.this, "hhhh,", Toast.LENGTH_LONG).show();
             }
-
-
-            
-
 
 
         }
@@ -121,7 +117,6 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_etudiant);
-
         String gr = getIntent().getExtras().getString("nom");
         toolbar = findViewById(R.id.toolbar_etu);
         setSupportActionBar(toolbar);
