@@ -88,19 +88,6 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
         if (requestCode == 0) {
             String path  = data.getData().getPath();
             Toast.makeText(EtudiantAct.this,path,Toast.LENGTH_LONG).show();
-            File file = new File(path);
-            Workbook wb = null;
-            try {
-                wb = Workbook.getWorkbook(new File(path));
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (BiffException e) {
-                e.printStackTrace();
-            }
-            Sheet s ;
-
-               s = wb.getSheet(0);
-
 
         }
 

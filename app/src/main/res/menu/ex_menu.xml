@@ -2,16 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 <item
-    android:title="Se déconnecter"
-    android:tooltipText="Deconnecter"
+    android:title="importer une liste"
+    android:tooltipText="importer une liste"
     android:id="@+id/import_"
     android:iconTint="@drawable/ic_exit_to_app_black_24dp"
     />
-    <item
 
-        android:title="Aide"
-        android:tooltipText="Deconnecter"
-        android:id="@+id/help"
-        android:icon="@drawable/ic_exit_to_app_black_24dp"
-        />
 </menu>
