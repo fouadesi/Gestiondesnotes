@@ -89,6 +89,7 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 0) {
+
             String path  = Environment.getRootDirectory() + data.getData().getPath();
 
                   Toast.makeText(EtudiantAct.this,path,Toast.LENGTH_LONG).show();
@@ -105,6 +106,9 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
             }catch (IOException | BiffException Ex) {
              Toast.makeText(EtudiantAct.this,"hhhh,",Toast.LENGTH_LONG).show();
             }
+
+
+            
 
 
 
