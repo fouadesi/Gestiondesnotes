@@ -60,27 +60,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        return true;
 //    }
 
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.Disconnect: {
+//                mAuth.signOut();
+//                Intent i = new Intent(MainActivity.this, Login.class);
+//                startActivity(i);
+//                finish();
+//                break;
+//            }
+//        }
+//        return true;
+//    }
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.Disconnect: {
-                mAuth.signOut();
-                Intent i = new Intent(MainActivity.this, Login.class);
-                startActivity(i);
-                finish();
-                break;
-            }
-        }
-        return true;
-    }
-    @Override
-    public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
+//    public void onBackPressed() {
+//        if (drawer.isDrawerOpen(GravityCompat.START)) {
+//            drawer.closeDrawer(GravityCompat.START);
+//        } else {
+//            super.onBackPressed();
+//        }
+//    }
 
 
     protected void onCreate(Bundle savedInstanceState) {
