@@ -60,7 +60,7 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
     public static String key_g ;
     DrawerLayout drawer ;
 
-        @Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.ex_menu, menu);
@@ -73,7 +73,7 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
             case R.id.import_: {
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
-                intent.setType("*/*");
+                intent.setType("/");
                 startActivityForResult(intent , 0 );
 
             }
@@ -82,9 +82,9 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
 //                Intent i = new Intent(EtudiantAct.this,ImportActivity.class);
 //                startActivity(i);
 //                finish();
-            }
-        return true;
         }
+        return true;
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -147,7 +147,7 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
 
         tabLayout.setupWithViewPager(viewPager);
         NavigationView navigationView = findViewById(R.id.nav_view);
-      navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setNavigationItemSelectedListener(this);
 
 
         ViewPagerAdapter viewpageradapter = new ViewPagerAdapter(getSupportFragmentManager(),0) ;
@@ -167,8 +167,8 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_ac:
-              onBackPressed();
-               finish();
+                onBackPressed();
+                finish();
 
                 break;
             case R.id.deconnecter :
