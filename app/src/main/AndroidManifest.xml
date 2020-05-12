@@ -15,7 +15,6 @@
         </activity>
 
         <activity
-            android:label="Les etudiants"
             android:name=".EtudiantAct"
             android:theme="@style/AppTheme" />
         <activity

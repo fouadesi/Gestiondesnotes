@@ -2,15 +2,20 @@ package com.example.gestiondenotes;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.transition.Explode;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar ;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -18,14 +23,16 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EtudiantAct extends AppCompatActivity {
+public class EtudiantAct extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private Fragment1 fragmentActivity1 ;
     private Fragment2 fragmentActivity2 ;
     private  Fragment3 fragmentActivity3 ;
@@ -34,15 +41,28 @@ public class EtudiantAct extends AppCompatActivity {
     private ViewPager viewPager ;
     private TabLayout tabLayout ;
     public static String key_g ;
+    DrawerLayout drawer ;
+
 
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_etudiant);
 
-        toolbar = findViewById(R.id.toolbar) ;
+        String gr = getIntent().getExtras().getString("nom");
+        toolbar = findViewById(R.id.toolbar_etu);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("Étudiants");
+        toolbar.setSubtitle("Groupes : " + gr);
+        setSupportActionBar(toolbar);
+        drawer = findViewById(R.id.drawer_etu);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+
 
         viewPager = findViewById(R.id.view_pager) ;
 
@@ -59,6 +79,9 @@ public class EtudiantAct extends AppCompatActivity {
         fragmentActivity4 = new Fragment4();
 
         tabLayout.setupWithViewPager(viewPager);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+      navigationView.setNavigationItemSelectedListener(this);
+
 
         ViewPagerAdapter viewpageradapter = new ViewPagerAdapter(getSupportFragmentManager(),0) ;
 
@@ -72,6 +95,27 @@ public class EtudiantAct extends AppCompatActivity {
 
 
         viewPager.setAdapter(viewpageradapter);
+    }
+
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_ac:
+              onBackPressed();
+               finish();
+
+                break;
+            case R.id.deconnecter :
+                FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                mAuth.signOut();
+            default:
+        }
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 
 

@@ -97,6 +97,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
 
 
@@ -187,6 +189,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
     }
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_ac:
+                Intent i = new Intent(MainActivity.this,MainActivity.class);
+                startActivity(i);
+                finish();
+
+                break;
+            case R.id.deconnecter :
+                FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                mAuth.signOut();
+            default:
+        }
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
 
     // insertion
     void add_groupe(String nom, String Note_eliminatoire, String Coeff) {
@@ -224,14 +247,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        return false;
-    }
 
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-    }
 }
 
 
