@@ -74,11 +74,12 @@ public class Group_act extends AppCompatActivity {
         test1 = getIntent().getExtras().getString("test1");
         test2 = getIntent().getExtras().getString("test2");
         participation = getIntent().getExtras().getString("participation");
-    absence = getIntent().getExtras().getString("absence");
+        absence = getIntent().getExtras().getString("absence");
 
-         id_module   =  getIntent().getExtras().getString("id");
-         listView    =  findViewById(R.id.list_view_groupes);
-         add_formule = findViewById(R.id.item_ajouterformule);
+
+        id_module   =  getIntent().getExtras().getString("id");
+        listView    =  findViewById(R.id.list_view_groupes);
+        add_formule = findViewById(R.id.item_ajouterformule);
 
          add_formule.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,6 +101,7 @@ public class Group_act extends AppCompatActivity {
                 builder.setPositiveButton("Ajouter", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+
                         final String Test1_edi = Test1.getText().toString().trim();
                         final String Test2_edi = Test2.getText().toString().trim();
                         final String Absence_edi = Absence.getText().toString().trim();
@@ -119,6 +121,7 @@ public class Group_act extends AppCompatActivity {
                                     s.dismiss();
                                 }
                             });
+
                             s.show();
                             return;
 
@@ -193,9 +196,6 @@ public class Group_act extends AppCompatActivity {
                 });
                 builder.show();
             }});
-
-
-
 
         DatabaseReference db_ref2 = FirebaseDatabase.getInstance().
                 getReference().child("Module_users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).

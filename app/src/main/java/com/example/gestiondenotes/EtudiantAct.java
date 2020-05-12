@@ -9,6 +9,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.transition.Explode;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -42,6 +44,23 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
     private TabLayout tabLayout ;
     public static String key_g ;
     DrawerLayout drawer ;
+        @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.ex_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.import_: {
+                Intent i = new Intent(EtudiantAct.this,ImportActivity.class);
+                startActivity(i);
+            }
+        }
+        return true;
+    }
 
 
     @Override
