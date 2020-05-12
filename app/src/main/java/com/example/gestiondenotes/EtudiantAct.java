@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import android.os.Environment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -36,6 +37,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -86,8 +89,24 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 0) {
-            String path  = data.getData().getPath();
-            Toast.makeText(EtudiantAct.this,path,Toast.LENGTH_LONG).show();
+            String path  = Environment.getRootDirectory() + data.getData().getPath();
+
+                  Toast.makeText(EtudiantAct.this,path,Toast.LENGTH_LONG).show();
+            try {
+                FileInputStream fileInputStream = new FileInputStream(path);
+
+            } catch (FileNotFoundException ex) {
+                Toast.makeText(EtudiantAct.this,"pas de fichier",Toast.LENGTH_LONG).show();
+            }
+            File file = new File(path);
+            try {
+                Workbook wb = Workbook.getWorkbook(file);
+                Sheet s = wb.getSheet(0);
+            }catch (IOException | BiffException Ex) {
+             Toast.makeText(EtudiantAct.this,"hhhh,",Toast.LENGTH_LONG).show();
+            }
+
+
 
         }
 
