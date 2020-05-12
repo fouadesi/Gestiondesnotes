@@ -13,8 +13,6 @@ import android.os.Environment;
 import android.os.FileUtils;
 import android.provider.MediaStore;
 import android.transition.Explode;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -56,7 +54,7 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
     private TabLayout tabLayout ;
     public static String key_g ;
     DrawerLayout drawer ;
-
+<<<<<<< HEAD
         @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -88,6 +86,23 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
         if (requestCode == 0) {
             String path  = data.getData().getPath();
             Toast.makeText(EtudiantAct.this,path,Toast.LENGTH_LONG).show();
+            File file = new File(path);
+            Workbook wb = null;
+            try {
+                wb = Workbook.getWorkbook(new File(path));
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (BiffException e) {
+                e.printStackTrace();
+            }
+            Sheet s ;
+
+               s = wb.getSheet(0);
+
+
+=======
+>>>>>>> parent of aee161e... add import exel activity
+
 
         }
 
