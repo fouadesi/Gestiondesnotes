@@ -7,7 +7,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.FileUtils;
+import android.provider.MediaStore;
 import android.transition.Explode;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -30,9 +34,17 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 
+
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
+
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.read.biff.BiffException;
 
 public class EtudiantAct extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private Fragment1 fragmentActivity1 ;
@@ -55,14 +67,46 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.import_: {
-                Intent i = new Intent(EtudiantAct.this,ImportActivity.class);
-                startActivity(i);
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                intent.setType("*/*");
+                startActivityForResult(intent , 0 );
+
             }
-        }
+
+
+//                Intent i = new Intent(EtudiantAct.this,ImportActivity.class);
+//                startActivity(i);
+//                finish();
+            }
         return true;
+        }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0) {
+            String path  = data.getData().getPath();
+            Toast.makeText(EtudiantAct.this,path,Toast.LENGTH_LONG).show();
+            File file = new File(path);
+            Workbook wb = null;
+            try {
+                wb = Workbook.getWorkbook(new File(path));
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (BiffException e) {
+                e.printStackTrace();
+            }
+            Sheet s ;
+
+               s = wb.getSheet(0);
+
+
+
+
+        }
+
+
     }
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
