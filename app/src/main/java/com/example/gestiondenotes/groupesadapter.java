@@ -90,7 +90,6 @@ public class groupesadapter extends ArrayAdapter<Groupes> {
         etudiant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent i = new Intent(getContext(), EtudiantAct.class);
                 i.putExtra("nom",groupe_users.getNom());
                 i.putExtra("ID",groupe_users.getId());

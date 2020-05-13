@@ -152,7 +152,7 @@ public class profil_etudiant extends AppCompatActivity {
 
                     } else {
                         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                            email_edi.setText("Entrer un email valid");
+                            email_edi.setError("Entrer un email valid");
                             return;
                         }
                         if (img_uri == null) {
