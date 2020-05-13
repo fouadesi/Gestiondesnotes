@@ -68,7 +68,7 @@
         android:layout_toRightOf="@id/profil_image_participation"
         android:fontFamily="@font/montserrat_alternates"
         android:text="ABSENCE"
-        android:textColor="@color/colorAccent" />
+        android:textColor="@android:color/black" />
     <ImageButton
         android:background="@drawable/absent_24dp"
         android:layout_margin="25dp"

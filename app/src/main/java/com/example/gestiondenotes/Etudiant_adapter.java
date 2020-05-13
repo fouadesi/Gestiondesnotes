@@ -70,7 +70,6 @@ public class Etudiant_adapter extends ArrayAdapter<Etudiant> {
           photo_etudiant=  convertView.findViewById(R.id.profil_image);
 
           /// 100 % fonctionement  ;
-        ImageButton etudiant_ajouter = convertView.findViewById(R.id.etudiant_ajouter);
 
           supprimer_etudiant = convertView.findViewById(R.id.supprimer_etudiant);
           /// 100 % fonctionnenement ;

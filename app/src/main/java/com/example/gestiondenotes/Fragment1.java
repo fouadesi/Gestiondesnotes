@@ -119,7 +119,7 @@ public class Fragment1 extends Fragment {
     TextInputEditText txt_prenom ;
   TextInputEditText txt_email ;
     TextInputEditText txt_ID ;
-    String PHOTO_DEFAULT = "https://firebasest" +
+    static String PHOTO_DEFAULT = "https://firebasest" +
             "orage.googleapis.com/v0/b/gestion-des-notes-57987.ap" +
             "pspot.com/o/IMAGES_ETUDIANT%2Fanon" +
             "ymity.jpg?alt=media&token=248fe5c2-6dc5-486c-9d8e-de2eef3813e3" ;

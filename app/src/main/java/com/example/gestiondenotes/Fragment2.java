@@ -83,9 +83,12 @@ public class Fragment2 extends Fragment {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_2, container, false);
         mResultList = v.findViewById(R.id.Result_list);
-        DatabaseReference db_ref = FirebaseDatabase.getInstance().
-                getReference().child("Module_users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).
-                child(Group_act.id_module).child("Groupes").child(EtudiantAct.key_g).child("Etudiants");
+
+            DatabaseReference db_ref = FirebaseDatabase.getInstance().
+                    getReference().child("Module_users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).
+                    child(Group_act.id_module).child("Groupes").child(EtudiantAct.key_g).child("Etudiants");
+
+
         db_ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

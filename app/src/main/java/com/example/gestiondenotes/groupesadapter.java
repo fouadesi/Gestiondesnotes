@@ -98,6 +98,7 @@ public class groupesadapter extends ArrayAdapter<Groupes> {
 
             }
         });
+
         return convertView;
     }
 }
