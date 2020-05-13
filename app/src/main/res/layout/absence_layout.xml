@@ -70,7 +70,7 @@
         android:text="ABSENCE"
         android:textColor="@android:color/black" />
     <ImageButton
-        android:background="@drawable/absent_24dp"
+        android:background="@drawable/plus"
         android:layout_margin="25dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
@@ -85,10 +85,10 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="0dp"
         android:layout_marginBottom="25dp"
         android:layout_toStartOf="@+id/Ajouter_absence"
-        android:background="@drawable/supprimer_absence" />
+        android:background="@drawable/mines" />
 
 
 
