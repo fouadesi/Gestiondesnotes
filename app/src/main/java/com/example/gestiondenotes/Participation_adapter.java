@@ -61,7 +61,7 @@ public class Participation_adapter extends ArrayAdapter<Etudiant> {
             }
         });
         Glide.with(getContext()).load(etudiant.getPicture()).into(profil_image_participation);
-        if (Integer.parseInt(etudiant.getParticipation()) <  2) {
+        if (Integer.parseInt(etudiant.getParticipation()) <=  2) {
             profil_image_participation.setBorderColor(Color.parseColor("#ff1744"));
         }
         name_participation.setText("Nom : " + etudiant.getNom());
@@ -99,8 +99,8 @@ public class Participation_adapter extends ArrayAdapter<Etudiant> {
     }
     void Supprimer_par(final Etudiant e) {
         MaterialAlertDialogBuilder m = new MaterialAlertDialogBuilder(getContext());
-        m.setTitle("Ajouter une absence");
-        m.setMessage("êtes vous sûr de vouloir ajouter une absence ");
+        m.setTitle("Retirer un point de partcipation");
+        m.setMessage("êtes vous sûr de vouloir retirer une participation ");
         m.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -108,9 +108,9 @@ public class Participation_adapter extends ArrayAdapter<Etudiant> {
                     Toast.makeText(getContext(),"Impossible",Toast.LENGTH_LONG).show();
                     return;
                 }
-                if (Integer.parseInt(e.getAbscence()) != 0 ) {
+                if (Integer.parseInt(e.getParticipation()) != 0 ) {
                     int i = Integer.parseInt(e.getParticipation()) - 1;
-                    e.setAbscence(String.valueOf(i));
+                    e.setParticipation(String.valueOf(i));
                     DatabaseReference db_ref = FirebaseDatabase.getInstance().getReference();
                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
                     ref.child("Module_users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).
