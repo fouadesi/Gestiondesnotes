@@ -1,12 +1,18 @@
 package com.example.gestiondenotes;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
+
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
@@ -16,6 +22,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 public class EditModule extends AppCompatActivity {
+    private DrawerLayout drawer ;
+    Toolbar toolbar ;
     DatabaseReference ref;
     TextInputEditText nom_module_edit_text, coef_du_module_edit_text, note_eliminatoire_du_module_edit_text;
     String get_nom, get_coeff, get_note_elim, id ;
@@ -23,8 +31,17 @@ public class EditModule extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_module);
-        ref = FirebaseDatabase.getInstance().getReference();
+        toolbar = findViewById(R.id.toolbar_edit_module);
         get_nom = getIntent().getExtras().getString("nom");
+        toolbar.setTitle("Modifier le module");
+        toolbar.setSubtitle("Module : " + get_nom);
+        setSupportActionBar(toolbar);
+        drawer = findViewById(R.id.drawer_edit_module);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        ref = FirebaseDatabase.getInstance().getReference();
         get_coeff = getIntent().getExtras().getString("coeff");
         get_note_elim = getIntent().getExtras().getString("note eliminatoire");
         id = getIntent().getExtras().getString("id");
