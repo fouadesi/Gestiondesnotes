@@ -91,7 +91,6 @@
             app:boxBackgroundMode="outline"
             android:layout_height="50dp">
                 <com.google.android.material.textfield.TextInputEditText
-
                     android:layout_width="match_parent"
                     android:inputType="number"
                     android:padding="10dp"
@@ -99,7 +98,6 @@
                     android:id="@+id/note_eliminatoire_edit"
                     android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
-
         <Button
             android:onClick="Update"
             android:id="@+id/edit"
