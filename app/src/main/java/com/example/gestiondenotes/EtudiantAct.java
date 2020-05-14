@@ -63,6 +63,7 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
     private Fragment2 fragmentActivity2 ;
     private  Fragment3 fragmentActivity3 ;
     private Fragment4 fragmentActivity4 ;
+    private Fragment5 fragmentActivity5 ;
     private Toolbar toolbar ;
     private ViewPager viewPager ;
     private TabLayout tabLayout ;
@@ -123,7 +124,7 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
         fragmentActivity3 = new Fragment3() ;
 
         fragmentActivity4 = new Fragment4();
-
+       fragmentActivity5 = new Fragment5();
         tabLayout.setupWithViewPager(viewPager);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -138,6 +139,7 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
         viewpageradapter.Addfragment(fragmentActivity3,"Marquer les Absence");
 
         viewpageradapter.Addfragment(fragmentActivity4,"Ajouter La participation");
+        viewpageradapter.Addfragment(fragmentActivity5,"Statistiques");
 
 
         viewPager.setAdapter(viewpageradapter);
@@ -148,7 +150,6 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
             case R.id.nav_ac:
                 onBackPressed();
                 finish();
-
                 break;
             case R.id.deconnecter :
                 FirebaseAuth mAuth = FirebaseAuth.getInstance();

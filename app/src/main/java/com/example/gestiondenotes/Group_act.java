@@ -271,7 +271,6 @@ public class Group_act extends AppCompatActivity {
         builder.setView(mview);
         builder.show();
     }
-
     void insertGroupe(String nom, String niveau) {
         Groupes g = new Groupes(nom, niveau);
         key = mDatabase.child("Module_users").push().getKey();
