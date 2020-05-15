@@ -7,6 +7,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 
 /**
@@ -59,6 +63,56 @@ public class Fragment5 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_5, container, false);
+        View v =  inflater.inflate(R.layout.fragment_5, container, false);
+        double _test1P = Double.valueOf(Group_act._test1);
+        double _test2P = Double.valueOf(Group_act._test2);
+        double _absencePoi = Double.valueOf(Group_act._absence);
+        double _participationP = Double.valueOf(Group_act._participation);
+        TextView moyTest1 = v.findViewById(R.id.moyTest1);
+        TextView moyTest2 = v.findViewById(R.id.moyTest2);
+        TextView ttAbs = v.findViewById(R.id.nbrAbs);
+        TextView ttPar = v.findViewById(R.id.nbrPar);
+        TextView moy_g = v.findViewById(R.id.moyGen);
+         int cptAbs = 0  ;
+        for (Etudiant etu : Fragment2.etudiant_users) {
+          cptAbs += Integer.parseInt(etu.getAbscence());
+        }
+        int cptParticipation = 0 ;
+        for (Etudiant etu : Fragment2.etudiant_users) {
+            cptParticipation += Integer.parseInt(etu.getParticipation());
+        }
+        double cptTest1 = 0 ;
+        for (Etudiant etu : Fragment2.etudiant_users) {
+            cptTest1 += Double.parseDouble(etu.getNote1());
+
+        }
+        cptTest1 = cptTest1 / Fragment2.etudiant_users.size();
+        double cptTest2 = 0 ;
+        for (Etudiant etu : Fragment2.etudiant_users) {
+            cptTest2 += Double.parseDouble(etu.getNote2());
+
+        }
+        double moy  = 0 ;
+         for (Etudiant e : Fragment2.etudiant_users) {
+             moy += e.getMoy() ;
+         }
+         cptTest2 = cptTest2 / Fragment2.etudiant_users.size();
+         moy = moy / Fragment2.etudiant_users.size();
+
+        moyTest1.setText("Moyenne du Test1 : " + cptTest1);
+        moyTest2.setText("Moyenne du Test2 : " + cptTest2);
+        ttAbs.setText("Nombre  total d'absence  : "  + cptAbs);
+        ttPar.setText("Nombre total de participation :" + cptParticipation);
+        moy_g.setText("moyenne générale :"+ moy);
+
+
+
+
+
+
+
+
+
+        return v ;
     }
 }

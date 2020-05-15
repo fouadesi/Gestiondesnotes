@@ -2,7 +2,10 @@ package com.example.gestiondenotes;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -53,17 +56,32 @@ public class profil_etudiant extends AppCompatActivity {
     Uri img_uri;
     StorageReference firebaseStorage;
     String img_uri_download;
+    String id_g ;
+    DrawerLayout drawer ;
+    Toolbar toolbar ;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil_etudiant);
-        // Recuperation des Donnees a partir ;;;;
-        btn = findViewById(R.id.Button_profile_etu);
-        num = getIntent().getExtras().getString("num");
         nom = getIntent().getExtras().getString("nom");
         prenom = getIntent().getExtras().getString("prenom");
+        toolbar = findViewById(R.id.toolbar_etudiant_edi);
+        ni = getIntent().getExtras().getString("ni");
+        num = getIntent().getExtras().getString("num");
+
+        toolbar.setTitle("Numero d'inscription " + ni );
+        toolbar.setSubtitle("Nom  :" + nom + " Prenom :" + prenom);
+        setSupportActionBar(toolbar);
+        drawer = findViewById(R.id.drawer_edit_etudiant);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        btn = findViewById(R.id.Button_profile_etu);
+        id_g = getIntent().getExtras().getString("id_g");
+
         email = getIntent().getExtras().getString("email");
         photo = getIntent().getExtras().getString("photo");
         Test1 = getIntent().getExtras().getString("test1");
@@ -71,15 +89,12 @@ public class profil_etudiant extends AppCompatActivity {
         img_uri_download = photo;
         Test2 = getIntent().getExtras().getString("test2");
         absence = getIntent().getExtras().getString("absence");
-        ni = getIntent().getExtras().getString("ni");
+
         nom_edi = findViewById(R.id.nom_du_etudiant_profile_etu);
         prenom_edi = findViewById(R.id.prenom_du_etudiant_profile_etu);
         email_edi = findViewById(R.id.email_du_etudiant_email_profile_etu);
         Test1_edi = findViewById(R.id.Test1_pro_etu);
         Test2_edi = findViewById(R.id.Test2_pro_etu);
-        absence_edi = findViewById(R.id.absence_etu);
-        num_edi = findViewById(R.id.numero_du_etudiant_profile_etu);
-        participation_edi = findViewById(R.id.participation_etu);
         im = findViewById(R.id.image_profile_etu);
         upload_image = findViewById(R.id.upload_image_profile_etu);
         Glide.with(profil_etudiant.this).load(photo).into(im);
@@ -88,9 +103,7 @@ public class profil_etudiant extends AppCompatActivity {
         email_edi.setText(email);
         Test1_edi.setText(Test1);
         Test2_edi.setText(Test2);
-        absence_edi.setText(absence);
-        num_edi.setText(ni);
-        participation_edi.setText(participation);
+
         upload_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,11 +120,10 @@ public class profil_etudiant extends AppCompatActivity {
                 final String new_email = email_edi.getText().toString();
                 final String new_test1 = Test1_edi.getText().toString();
                 final String new_test2 = Test2_edi.getText().toString();
-                final String new_absence = absence_edi.getText().toString();
-                final String new_participation = participation_edi.getText().toString();
+
                 if (new_nom.equals(nom) && new_prenom.equals(prenom) && new_test1.equals(Test1)
-                        && new_test2.equals(Test2) && new_email.equals(email) && new_absence.equals(absence)
-                        && new_participation.equals(participation) && img_uri == null) {
+                        && new_test2.equals(Test2) && new_email.equals(email) &&
+                       img_uri == null) {
                     final Snackbar s = Snackbar.make(findViewById(android.R.id.content),
                             "Aucun changement !", Snackbar.LENGTH_LONG);
                     s.setDuration(10000);
@@ -130,7 +142,7 @@ public class profil_etudiant extends AppCompatActivity {
                     return;
                 } else {
                     String ERROR = "Vous devez remplir ce champ";
-                    if (new_nom.isEmpty() || new_prenom.isEmpty() || new_absence.isEmpty() ||
+                    if (new_nom.isEmpty() || new_prenom.isEmpty() ||
                             new_email.isEmpty() || new_test1.isEmpty() || new_test2.isEmpty()) {
                         final Snackbar s = Snackbar.make(findViewById(android.R.id.content),
                                 "Vous devez remplir tous les champs", Snackbar.LENGTH_LONG);
@@ -156,7 +168,7 @@ public class profil_etudiant extends AppCompatActivity {
                             return;
                         }
                         if (img_uri == null) {
-                            Etudiant e = new Etudiant(new_nom, new_prenom, ni, new_absence, new_email, new_test1, new_test2, img_uri_download,new_participation);
+                            Etudiant e = new Etudiant(new_nom, new_prenom, ni, absence, new_email, new_test1, new_test2, img_uri_download,participation);
                             edit_etu(e);
                             return;
                         } else {
@@ -186,7 +198,7 @@ public class profil_etudiant extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<Uri> task) {
                                             if (task.isSuccessful()) {
                                                 img_uri_download = task.getResult().toString();
-                                                Etudiant e = new Etudiant(new_nom, new_prenom, ni, new_absence, new_email, new_test1, new_test2, img_uri_download,new_participation);
+                                                Etudiant e = new Etudiant(new_nom, new_prenom, ni, absence, new_email, new_test1, new_test2, img_uri_download,participation);
                                                 edit_etu(e);
                                             }
                                         }
@@ -205,8 +217,7 @@ public class profil_etudiant extends AppCompatActivity {
         email_edi.addTextChangedListener(watcher);
         Test1_edi.addTextChangedListener(watcher);
         Test2_edi.addTextChangedListener(watcher);
-        absence_edi.addTextChangedListener(watcher);
-        num_edi.addTextChangedListener(watcher);
+
 
 
     }

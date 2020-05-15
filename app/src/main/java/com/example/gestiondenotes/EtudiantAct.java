@@ -133,13 +133,19 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
         ViewPagerAdapter viewpageradapter = new ViewPagerAdapter(getSupportFragmentManager(),0) ;
 
         viewpageradapter.Addfragment(fragmentActivity2,"Liste des etudiants");
-
-        viewpageradapter.Addfragment(fragmentActivity1,"Ajouter un etudiant");
+        viewpageradapter.Addfragment(fragmentActivity4,"Ajouter La participation");
 
         viewpageradapter.Addfragment(fragmentActivity3,"Marquer les Absence");
+        viewpageradapter.Addfragment(fragmentActivity1,"Ajouter un etudiant");
 
-        viewpageradapter.Addfragment(fragmentActivity4,"Ajouter La participation");
         viewpageradapter.Addfragment(fragmentActivity5,"Statistiques");
+
+
+
+
+
+
+
 
 
         viewPager.setAdapter(viewpageradapter);

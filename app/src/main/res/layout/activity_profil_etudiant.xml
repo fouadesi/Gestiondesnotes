@@ -1,224 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:id="@+id/drawer_edit_etudiant"
     android:layout_height="match_parent"
     tools:context=".profil_etudiant">
     <LinearLayout
-        android:layout_marginTop="10dp"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
+        android:layout_marginBottom="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:src="@drawable/e"
-            android:id="@+id/image_profile_etu"
-            android:layout_marginTop="40dp"
-            android:layout_width="120dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_height="120dp"/>
-        <ImageButton
-            android:id="@+id/upload_image_profile_etu"
-            android:layout_marginTop="45dp"
+        <include
+            android:id="@+id/toolbar_etudiant_edi"
+            layout="@layout/toolbar" />
+
+
+    </LinearLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:padding="0dp"
+        app:contentInsetStart="0dp"
+        app:titleMarginStart="0dp"
+        android:layout_margin="0dp"
+        app:menu="@menu/drawer_menu" />
+    <LinearLayout
+        android:layout_marginTop="100dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:src="@drawable/e"
+                android:id="@+id/image_profile_etu"
+                android:layout_marginTop="40dp"
+                android:layout_width="120dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="120dp"/>
+            <ImageButton
+                android:id="@+id/upload_image_profile_etu"
+                android:layout_marginTop="45dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/ic_cloud_upload_black_24dp" />
+        </LinearLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:hint="Nom"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:counterEnabled="false"
+            app:counterMaxLength="20"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxBackgroundMode="outline"
+            android:layout_height="50dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nom_du_etudiant_profile_etu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_alternates"
+                android:padding="10dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <LinearLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+        </LinearLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:hint="Prenom"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:counterEnabled="false"
+            app:counterMaxLength="20"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxBackgroundMode="outline"
+            android:layout_height="50dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:fontFamily="@font/montserrat_alternates"
+                android:id="@+id/prenom_du_etudiant_profile_etu"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:hint="Email"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:counterEnabled="false"
+            app:counterMaxLength="20"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxBackgroundMode="outline"
+            android:layout_height="50dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:inputType="textEmailAddress"
+                android:padding="10dp"
+                android:fontFamily="@font/montserrat_alternates"
+                android:id="@+id/email_du_etudiant_email_profile_etu"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:hint="Test 1"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:counterEnabled="false"
+            app:counterMaxLength="20"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxBackgroundMode="outline"
+            android:layout_height="50dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:inputType="textEmailAddress"
+                android:padding="10dp"
+                android:fontFamily="@font/montserrat_alternates"
+                android:id="@+id/Test1_pro_etu"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:hint="Test 2"
+
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:counterEnabled="false"
+            app:counterMaxLength="20"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxBackgroundMode="outline"
+            android:layout_height="50dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:inputType="number"
+                android:padding="10dp"
+                android:fontFamily="@font/montserrat_alternates"
+                android:id="@+id/Test2_pro_etu"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <Button
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="end"
+            android:enabled="false"
+            android:id="@+id/Button_profile_etu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:background="@drawable/ic_cloud_upload_black_24dp" />
+            android:text="Ajouter l'etudiant"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            />
+
     </LinearLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:hint="Nom"
-        app:boxCornerRadiusBottomEnd="10dp"
-        app:counterEnabled="false"
-        app:counterMaxLength="20"
-        app:boxCornerRadiusBottomStart="10dp"
-        app:boxCornerRadiusTopStart="10dp"
-        app:boxCornerRadiusTopEnd="10dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:boxBackgroundMode="outline"
-        android:layout_height="40dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/nom_du_etudiant_profile_etu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_alternates"
-            android:padding="10dp" />
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:hint="Prenom"
-        app:boxCornerRadiusBottomEnd="10dp"
-        app:counterEnabled="false"
-        app:counterMaxLength="20"
-        app:boxCornerRadiusBottomStart="10dp"
-        app:boxCornerRadiusTopStart="10dp"
-        app:boxCornerRadiusTopEnd="10dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:boxBackgroundMode="outline"
-        android:layout_height="50dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:padding="10dp"
-            android:fontFamily="@font/montserrat_alternates"
-            android:id="@+id/prenom_du_etudiant_profile_etu"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:hint="Email"
-        app:boxCornerRadiusBottomEnd="10dp"
-        app:counterEnabled="false"
-        app:counterMaxLength="20"
-        app:boxCornerRadiusBottomStart="10dp"
-        app:boxCornerRadiusTopStart="10dp"
-        app:boxCornerRadiusTopEnd="10dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:boxBackgroundMode="outline"
-        android:layout_height="50dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:inputType="textEmailAddress"
-            android:padding="10dp"
-            android:fontFamily="@font/montserrat_alternates"
-            android:id="@+id/email_du_etudiant_email_profile_etu"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:hint="Numero d'isncription"
-        app:boxCornerRadiusBottomEnd="10dp"
-        app:counterEnabled="false"
-        app:counterMaxLength="20"
-        app:boxCornerRadiusBottomStart="10dp"
-        app:boxCornerRadiusTopStart="10dp"
-        app:boxCornerRadiusTopEnd="10dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:boxBackgroundMode="outline"
-        android:layout_height="50dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:inputType="number"
-            android:padding="10dp"
-            android:fontFamily="@font/montserrat_alternates"
-            android:enabled="false"
-            android:id="@+id/numero_du_etudiant_profile_etu"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:hint="Test1"
-        app:boxCornerRadiusBottomEnd="10dp"
-        app:counterEnabled="false"
-        app:counterMaxLength="20"
-        app:boxCornerRadiusBottomStart="10dp"
-        app:boxCornerRadiusTopStart="10dp"
-        app:boxCornerRadiusTopEnd="10dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:boxBackgroundMode="outline"
-        android:layout_height="50dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:inputType="textEmailAddress"
-            android:padding="10dp"
-            android:fontFamily="@font/montserrat_alternates"
-            android:id="@+id/Test1_pro_etu"
-            android:layout_height="wrap_content" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:hint="Test1"
-
-        app:boxCornerRadiusBottomEnd="10dp"
-        app:counterEnabled="false"
-        app:counterMaxLength="20"
-        app:boxCornerRadiusBottomStart="10dp"
-        app:boxCornerRadiusTopStart="10dp"
-        app:boxCornerRadiusTopEnd="10dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:boxBackgroundMode="outline"
-        android:layout_height="50dp">
-
-    <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:inputType="number"
-            android:padding="10dp"
-        android:fontFamily="@font/montserrat_alternates"
-            android:id="@+id/Test2_pro_etu"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:hint="absence"
-        app:boxCornerRadiusBottomEnd="10dp"
-        app:counterEnabled="false"
-        app:counterMaxLength="20"
-        app:boxCornerRadiusBottomStart="10dp"
-        app:boxCornerRadiusTopStart="10dp"
-        app:boxCornerRadiusTopEnd="10dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:boxBackgroundMode="outline"
-        android:layout_height="50dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:inputType="number"
-            android:padding="10dp"
-            android:fontFamily="@font/montserrat_alternates"
-            android:id="@+id/absence_etu"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:hint="particiaption"
-        app:boxCornerRadiusBottomEnd="10dp"
-        app:counterEnabled="false"
-        app:counterMaxLength="20"
-        app:boxCornerRadiusBottomStart="10dp"
-        app:boxCornerRadiusTopStart="10dp"
-        app:boxCornerRadiusTopEnd="10dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:boxBackgroundMode="outline"
-        android:layout_height="50dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:inputType="number"
-            android:padding="10dp"
-            android:fontFamily="@font/montserrat_alternates"
-            android:id="@+id/participation_etu"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
-    <Button
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="end"
-        android:enabled="false"
-        android:id="@+id/Button_profile_etu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ajouter l'etudiant"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        />
-
-
-</LinearLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

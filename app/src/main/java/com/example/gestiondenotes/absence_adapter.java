@@ -61,7 +61,7 @@ public class absence_adapter  extends ArrayAdapter<Etudiant> {
            }
        });
         Glide.with(getContext()).load(etudiant.getPicture()).into(profil_image_absence);
-           if (Integer.parseInt(etudiant.getAbscence())> 2) {
+           if (Integer.parseInt(etudiant.getAbscence()) > 2) {
                profil_image_absence.setBorderColor(Color.parseColor("#ff1744"));
            }
         name_absence.setText("Nom : " + etudiant.getNom());

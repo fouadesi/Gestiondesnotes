@@ -55,15 +55,27 @@ public class Etudiant_adapter extends ArrayAdapter<Etudiant> {
         double _test1P = Double.valueOf(Group_act._test1);
         double _test2P = Double.valueOf(Group_act._test2);
         double _absencePoi = Double.valueOf(Group_act._absence);
+        double _participationP = Double.valueOf(Group_act._participation);
         double _test1 = Double.valueOf(etudiant.getNote1()) ;
         double _test2 = Double.valueOf(etudiant.getNote2()) ;
         double _absence = Double.valueOf(etudiant.getAbscence()) ;
-        double moyenne = ( (_test1P / 100)  * _test1) +( (_test2P / 100) * _test2 ) - (_absence * _absencePoi);
+        double _participation = Double.valueOf(etudiant.getParticipation());
+        double moyenne = ( (_test1P / 100)  * _test1) +( (_test2P / 100) * _test2 )
+                - (_absence * _absencePoi) + (_participation * _participationP);
         if ( moyenne < 0 ) {
             moy_etu.setText(" Moyenne : " + 0);
             moy_etu.setTextColor(Color.parseColor("#ff1744"));
-        } else {
+
+                etudiant.setMoy(0);
+            }
+        else if (moyenne > 20) {
+            moy_etu.setText("Moyenne : " + 20);
+            etudiant.setMoy(20);
+        }
+         else {
+             etudiant.setMoy(moyenne);
             moy_etu.setText(" Moyenne : " + moyenne);
+
         }
         ImageButton supprimer_etudiant ;
          CircleImageView photo_etudiant ;
@@ -100,6 +112,7 @@ public class Etudiant_adapter extends ArrayAdapter<Etudiant> {
             @Override
             public void onClick(View v) {
                 Intent i  = new Intent(getContext(),profil_etudiant.class);
+                i.putExtra("id_g",EtudiantAct.key_g);
                 i.putExtra("nom",etudiant.getNom());
                 i.putExtra("prenom",etudiant.getPrenom());
                 i.putExtra("email",etudiant.getEmail());
