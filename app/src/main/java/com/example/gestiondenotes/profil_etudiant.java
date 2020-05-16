@@ -63,12 +63,14 @@ public class profil_etudiant extends AppCompatActivity {
     Toolbar toolbar ;
     String groupeId ;
     String module_id ;
+    String nomG ;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil_etudiant);
+        nomG =getIntent().getExtras().getString("nomG");
         nom = getIntent().getExtras().getString("nom");
         prenom = getIntent().getExtras().getString("prenom");
         toolbar = findViewById(R.id.toolbar_etudiant_edi);
@@ -76,10 +78,10 @@ public class profil_etudiant extends AppCompatActivity {
         num = getIntent().getExtras().getString("num");
         groupeId = getIntent().getExtras().getString("id_g");
         module_id = getIntent().getExtras().getString("ID_M");
-        Test1P = getIntent().getExtras().getString("test1");
-        Test2P = getIntent().getExtras().getString("test2");
-        AbsenceP = getIntent().getExtras().getString("absence");
-        Participationp = getIntent().getExtras().getString("participation");
+        Test1P = getIntent().getExtras().getString("test1P");
+        Test2P = getIntent().getExtras().getString("test2P");
+        AbsenceP = getIntent().getExtras().getString("absenceP");
+        Participationp = getIntent().getExtras().getString("participationP");
 
         toolbar.setTitle("Numero d'inscription " + ni );
         toolbar.setSubtitle("Nom  :" + nom + " Prenom :" + prenom);
@@ -91,7 +93,6 @@ public class profil_etudiant extends AppCompatActivity {
         toggle.syncState();
         btn = findViewById(R.id.Button_profile_etu);
         id_g = getIntent().getExtras().getString("id_g");
-
         email = getIntent().getExtras().getString("email");
         photo = getIntent().getExtras().getString("photo");
         Test1 = getIntent().getExtras().getString("test1");
@@ -173,7 +174,7 @@ public class profil_etudiant extends AppCompatActivity {
 
 
                     } else {
-                        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                        if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                             email_edi.setError("Entrer un email valid");
                             return;
                         }
@@ -241,6 +242,7 @@ public class profil_etudiant extends AppCompatActivity {
         i.putExtra("test2",Test2P);
         i.putExtra("participation",Participationp);
         i.putExtra("absence",AbsenceP);
+        i.putExtra("nomG",nomG);
         startActivity(i);
         finish();
 
@@ -257,7 +259,7 @@ public class profil_etudiant extends AppCompatActivity {
     public void edit_etu(Etudiant e) {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
         ref.child("Module_users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).
-                child(Group_act.id_module).child("Groupes").child(groupeId).
+                child(EtudiantAct.ID_MODULE).child("Groupes").child(EtudiantAct.key_g).
                 child("Etudiants").child(e.getNI()).setValue(e).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {

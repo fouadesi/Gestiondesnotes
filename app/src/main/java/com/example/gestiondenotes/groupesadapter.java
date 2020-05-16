@@ -98,7 +98,8 @@ public class groupesadapter extends ArrayAdapter<Groupes> {
                 i.putExtra("participation",Group_act._participation);
                 i.putExtra("absence",Group_act._absence);
 
-                i.putExtra("nom",groupe_users.getNom());
+                i.putExtra("nomG",groupe_users.getNom());
+                i.putExtra("nomM",Group_act.nom_module);
                 i.putExtra("ID",groupe_users.getId());
                 i.putExtra("ID_M",Group_act.id_module);
                 getContext().startActivity(i);

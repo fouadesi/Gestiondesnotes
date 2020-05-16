@@ -46,6 +46,7 @@ public class Group_act extends AppCompatActivity {
      String absence ;
     private DrawerLayout drawer;
     private Toolbar toolbar ;
+    static String nom_module ;
 
 
 
@@ -55,7 +56,7 @@ public class Group_act extends AppCompatActivity {
          super.onCreate(savedInstanceState);
          setContentView(R.layout.activity_group_act);
         toolbar = findViewById(R.id.toolbar_groupes);
-        String nom_module = getIntent().getExtras().getString("nom");
+      nom_module = getIntent().getExtras().getString("nomM");
         toolbar.setTitle("Groupes");
         toolbar.setSubtitle("Module : " + nom_module );
         setSupportActionBar(toolbar);

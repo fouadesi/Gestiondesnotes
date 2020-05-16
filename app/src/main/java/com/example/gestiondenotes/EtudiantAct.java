@@ -89,12 +89,15 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
         i.putExtra("test2",test2);
         i.putExtra("participation",participation);
         i.putExtra("absence",absence);
+        i.putExtra("nomM",nom_module);
         startActivity(i);
         finish();
         super.onBackPressed();
     }
     static String ID_MODULE ;
    static String test1, test2,absence,participation ;
+   String nom_module ;
+   static String gr ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +107,8 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
         test2 = getIntent().getExtras().getString("test2");
         participation = getIntent().getExtras().getString("participation");
         absence =  getIntent().getExtras().getString("absence") ;
+        nom_module = getIntent().getExtras().getString("nomM");
+
 
         ID_MODULE = getIntent().getExtras().getString("ID_M");
         Toast.makeText(EtudiantAct.this,ID_MODULE,Toast.LENGTH_LONG).show();
@@ -115,7 +120,7 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1001);
         }
         setContentView(R.layout.activity_etudiant);
-        String gr = getIntent().getExtras().getString("nom");
+         gr = getIntent().getExtras().getString("nomG");
         toolbar = findViewById(R.id.toolbar_etu);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Étudiants");

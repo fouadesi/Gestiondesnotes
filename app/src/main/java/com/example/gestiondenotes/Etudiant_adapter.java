@@ -113,6 +113,7 @@ public class Etudiant_adapter extends ArrayAdapter<Etudiant> {
             @Override
             public void onClick(View v) {
                 Intent i  = new Intent(getContext(),profil_etudiant.class);
+                i.putExtra("nomG",EtudiantAct.gr);
                 i.putExtra("test1P",EtudiantAct.test1);
                 i.putExtra("test2P",EtudiantAct.test2);
                 i.putExtra("participationP",EtudiantAct.participation);
@@ -128,7 +129,6 @@ public class Etudiant_adapter extends ArrayAdapter<Etudiant> {
                 i.putExtra("photo",etudiant.getPicture());
                 i.putExtra("absence",etudiant.getAbscence()) ;
                 i.putExtra("participation",etudiant.getParticipation());
-
                 getContext().startActivity(i);
             }
         });
