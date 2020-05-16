@@ -3,10 +3,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -15,13 +17,14 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-public class EditModule extends AppCompatActivity {
+public class EditModule extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer ;
     Toolbar toolbar ;
     DatabaseReference ref;
@@ -41,6 +44,8 @@ public class EditModule extends AppCompatActivity {
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
         ref = FirebaseDatabase.getInstance().getReference();
         get_coeff = getIntent().getExtras().getString("coeff");
         get_note_elim = getIntent().getExtras().getString("note eliminatoire");
@@ -104,7 +109,7 @@ public class EditModule extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
                     final Snackbar s = Snackbar.make(findViewById(android.R.id.content),
-                            "Modifier avec succees", Snackbar.LENGTH_LONG);
+                            "Modifier avec succès", Snackbar.LENGTH_LONG);
                     s.setDuration(10000);
                     s.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
                     s.setBackgroundTint(getResources().getColor(R.color.colorAccent));
@@ -126,6 +131,29 @@ public class EditModule extends AppCompatActivity {
         });
 
     }
+
+
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_ac:
+                Intent i = new Intent (EditModule.this,MainActivity.class);
+                startActivity(i);
+                finish();
+                break;
+            case R.id.deconnecter :
+                FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                mAuth.signOut();
+                if (mAuth.getCurrentUser() == null) {
+                    Intent j =  new Intent (EditModule.this,Login.class);
+                    startActivity(j);
+                    finish();
+                }
+            default:
+        }
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
 }
 
 

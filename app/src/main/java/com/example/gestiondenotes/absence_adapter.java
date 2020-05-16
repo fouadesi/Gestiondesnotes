@@ -100,8 +100,8 @@ public class absence_adapter  extends ArrayAdapter<Etudiant> {
    }
  void Supprimer_abs(final Etudiant e) {
      MaterialAlertDialogBuilder m = new MaterialAlertDialogBuilder(getContext());
-     m.setTitle("Ajouter une absence");
-     m.setMessage("êtes vous sûr de vouloir ajouter une absence ");
+     m.setTitle("Supprimer une absence");
+     m.setMessage("êtes vous sûr de vouloir supprimer une absence ");
      m.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
          @Override
          public void onClick(DialogInterface dialog, int which) {

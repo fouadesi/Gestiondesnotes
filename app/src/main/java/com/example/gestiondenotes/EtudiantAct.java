@@ -131,6 +131,9 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
 
 
 
@@ -150,8 +153,6 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
         fragmentActivity5 = new Fragment5();
 
         tabLayout.setupWithViewPager(viewPager);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
 
 
         ViewPagerAdapter viewpageradapter = new ViewPagerAdapter(getSupportFragmentManager(),0) ;
@@ -178,12 +179,18 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_ac:
-                onBackPressed();
+                Intent i = new Intent (EtudiantAct.this,MainActivity.class);
+                startActivity(i);
                 finish();
                 break;
             case R.id.deconnecter :
                 FirebaseAuth mAuth = FirebaseAuth.getInstance();
                 mAuth.signOut();
+                if (mAuth.getCurrentUser() == null) {
+                    Intent j =  new Intent (EtudiantAct.this,Login.class);
+                    startActivity(j);
+                    finish();
+                }
             default:
         }
         drawer.closeDrawer(GravityCompat.START);
@@ -194,6 +201,7 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
+
 
 
     public class ViewPagerAdapter extends FragmentPagerAdapter {

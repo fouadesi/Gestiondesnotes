@@ -60,6 +60,24 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:background="@drawable/bg3" />
+    <TextView
+        android:textSize="20sp"
+        android:background="@drawable/bg3"
+        android:id="@+id/plus10"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="420dp"
+        android:gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="50dp" />
+    <TextView
+        android:textSize="20sp"
+        android:background="@drawable/bg3"
+        android:id="@+id/plus15"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="480dp"
+        android:gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="50dp" />
 
 
 

@@ -74,6 +74,8 @@ public class Fragment5 extends Fragment {
         TextView ttAbs = v.findViewById(R.id.nbrAbs);
         TextView ttPar = v.findViewById(R.id.nbrPar);
         TextView moy_g = v.findViewById(R.id.moyGen);
+        TextView plus10 = v.findViewById(R.id.plus10);
+        TextView plus15 = v.findViewById(R.id.plus15);
          int cptAbs = 0  ;
         for (Etudiant etu : Fragment2.etudiant_users) {
           cptAbs += Integer.parseInt(etu.getAbscence());
@@ -99,12 +101,50 @@ public class Fragment5 extends Fragment {
          }
          cptTest2 = cptTest2 / Fragment2.etudiant_users.size();
          moy = moy / Fragment2.etudiant_users.size();
+         double cptMoyplus10 = 0 ;
+         for (Etudiant e : Fragment2.etudiant_users) {
+             if (e.getMoy() >= 10) {
+                 cptMoyplus10++;
+             }
+         }
+        double prPlus10 ;
+        if (cptMoyplus10 == 0) {
+             prPlus10 = 0 ;
+         }else {
+            prPlus10 = (cptMoyplus10 / Fragment2.etudiant_users.size()) * 100 ;
+        }
+        prPlus10 = (double) Math.round(prPlus10 * 100) / 100;
+        double cptplus15 = 0 ;
+        for (Etudiant e : Fragment2.etudiant_users) {
+            if (e.getMoy() >= 15) {
+                cptplus15++;
+            }
+        }
+        double prPlus15 ;
+        if (cptplus15 == 0) {
+            prPlus15 = 0 ;
+        }else {
+            prPlus15 = (cptplus15 / Fragment2.etudiant_users.size()) * 100 ;
+        }
+
+        prPlus10 = (double) Math.round(prPlus10 * 100) / 100;
+        prPlus15 = (double) Math.round(prPlus15 * 100) / 100;
+
+
+
+
+        moy = (double) Math.round(moy * 100) / 100;
+        cptTest1= (double) Math.round(cptTest1 * 100) / 100;
+        cptTest2= (double) Math.round(cptTest2 * 100) / 100;
 
         moyTest1.setText("Moyenne du Test1 : " + cptTest1);
         moyTest2.setText("Moyenne du Test2 : " + cptTest2);
         ttAbs.setText("Nombre  total d'absence  : "  + cptAbs);
         ttPar.setText("Nombre total de participation :" + cptParticipation);
         moy_g.setText("moyenne générale :"+ moy);
+        plus10.setText("Moyenne +10 :" + prPlus10 +" %");
+        plus15.setText("Moyenne +15 :" + prPlus15 + " %");
+
 
 
 

@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
@@ -26,6 +27,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
@@ -39,7 +41,7 @@ import com.google.firebase.storage.UploadTask;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class profil_etudiant extends AppCompatActivity {
+public class profil_etudiant extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     String nom;
     String prenom;
     String email;
@@ -64,6 +66,26 @@ public class profil_etudiant extends AppCompatActivity {
     String groupeId ;
     String module_id ;
     String nomG ;
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_ac:
+                Intent i = new Intent (profil_etudiant.this,MainActivity.class);
+                startActivity(i);
+                finish();
+                break;
+            case R.id.deconnecter :
+                FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                mAuth.signOut();
+                if (mAuth.getCurrentUser() == null) {
+                    Intent j =  new Intent (profil_etudiant.this,Login.class);
+                    startActivity(j);
+                    finish();
+                }
+            default:
+        }
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
 
 
     @Override
@@ -91,6 +113,8 @@ public class profil_etudiant extends AppCompatActivity {
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
         btn = findViewById(R.id.Button_profile_etu);
         id_g = getIntent().getExtras().getString("id_g");
         email = getIntent().getExtras().getString("email");

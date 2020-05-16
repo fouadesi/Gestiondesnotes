@@ -4,10 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -17,6 +20,7 @@ import com.github.clans.fab.FloatingActionButton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
@@ -29,7 +33,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class Group_act extends AppCompatActivity {
+public class Group_act extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     static String id_module;
     FloatingActionButton btn;
     DatabaseReference mDatabase;
@@ -48,8 +52,35 @@ public class Group_act extends AppCompatActivity {
     private Toolbar toolbar ;
     static String nom_module ;
 
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_ac:
+                Intent i = new Intent (Group_act.this,MainActivity.class);
+                startActivity(i);
+                finish();
+                break;
+            case R.id.deconnecter :
+                FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                mAuth.signOut();
+                if (mAuth.getCurrentUser() == null) {
+                    Intent j =  new Intent (Group_act.this,Login.class);
+                    startActivity(j);
+                    finish();
+                }
+            default:
+        }
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
 
-
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.deconnecter :
+                Toast.makeText(Group_act.this,"gjdfhj",Toast.LENGTH_LONG).show();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +107,8 @@ public class Group_act extends AppCompatActivity {
         test2 = getIntent().getExtras().getString("test2");
         participation = getIntent().getExtras().getString("participation");
     absence = getIntent().getExtras().getString("absence");
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
          id_module   =  getIntent().getExtras().getString("id");
          listView    =  findViewById(R.id.list_view_groupes);
@@ -314,6 +347,7 @@ public class Group_act extends AppCompatActivity {
             }
         });
     }
+
 
 
 }
