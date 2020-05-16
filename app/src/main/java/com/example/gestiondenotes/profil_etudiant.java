@@ -198,7 +198,7 @@ public class profil_etudiant extends AppCompatActivity implements NavigationView
 
 
                     } else {
-                        if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                        if (!Patterns.EMAIL_ADDRESS.matcher(new_email).matches()) {
                             email_edi.setError("Entrer un email valid");
                             return;
                         }
