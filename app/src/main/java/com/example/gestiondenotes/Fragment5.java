@@ -28,6 +28,7 @@ public class Fragment5 extends Fragment {
     private String mParam1;
     private String mParam2;
 
+
     public Fragment5() {
         // Required empty public constructor
     }
@@ -64,10 +65,10 @@ public class Fragment5 extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v =  inflater.inflate(R.layout.fragment_5, container, false);
-        double _test1P = Double.valueOf(Group_act._test1);
-        double _test2P = Double.valueOf(Group_act._test2);
-        double _absencePoi = Double.valueOf(Group_act._absence);
-        double _participationP = Double.valueOf(Group_act._participation);
+      double _test1P = Double.valueOf(EtudiantAct.test1);
+      double _test2P = Double.valueOf(EtudiantAct.test2);
+      double _absencePoi = Double.valueOf(EtudiantAct.absence);
+       double _participationP = Double.valueOf(EtudiantAct.participation);
         TextView moyTest1 = v.findViewById(R.id.moyTest1);
         TextView moyTest2 = v.findViewById(R.id.moyTest2);
         TextView ttAbs = v.findViewById(R.id.nbrAbs);

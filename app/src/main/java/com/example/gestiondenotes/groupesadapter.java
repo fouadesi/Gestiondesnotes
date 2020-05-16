@@ -24,6 +24,7 @@ import java.util.ArrayList;
 
 public class groupesadapter extends ArrayAdapter<Groupes> {
     DatabaseReference db_ref;
+    static String groupeId ;
 
 
     public groupesadapter(@NonNull Context context, ArrayList<Groupes> groupes) {
@@ -91,8 +92,15 @@ public class groupesadapter extends ArrayAdapter<Groupes> {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getContext(), EtudiantAct.class);
+                groupeId = groupe_users.getId();
+                i.putExtra("test1",Group_act._test1);
+                i.putExtra("test2",Group_act._test2);
+                i.putExtra("participation",Group_act._participation);
+                i.putExtra("absence",Group_act._absence);
+
                 i.putExtra("nom",groupe_users.getNom());
                 i.putExtra("ID",groupe_users.getId());
+                i.putExtra("ID_M",Group_act.id_module);
                 getContext().startActivity(i);
 
             }

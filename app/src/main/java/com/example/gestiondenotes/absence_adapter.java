@@ -85,7 +85,7 @@ public class absence_adapter  extends ArrayAdapter<Etudiant> {
                DatabaseReference db_ref = FirebaseDatabase.getInstance().getReference();
                DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
                ref.child("Module_users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).
-                       child(Group_act.id_module).child("Groupes").child(EtudiantAct.key_g).
+                       child(EtudiantAct.ID_MODULE).child("Groupes").child(EtudiantAct.key_g).
                        child("Etudiants").child(e.getNI()).setValue(e);
 
            }});
@@ -115,7 +115,7 @@ public class absence_adapter  extends ArrayAdapter<Etudiant> {
                  DatabaseReference db_ref = FirebaseDatabase.getInstance().getReference();
                  DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
                  ref.child("Module_users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).
-                         child(Group_act.id_module).child("Groupes").child(EtudiantAct.key_g).
+                         child(EtudiantAct.ID_MODULE).child("Groupes").child(EtudiantAct.key_g).
                          child("Etudiants").child(e.getNI()).setValue(e);
              } else {
                  final Snackbar s = Snackbar.make(v,

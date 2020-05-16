@@ -66,10 +66,16 @@ public class Fragment1 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    String key ;
+
+    public Fragment1(String key) {
+
+this.key = key ;
+        // Required empty public constructor
+    }
 
     public Fragment1() {
 
-        // Required empty public constructor
     }
 
     /**
@@ -227,7 +233,7 @@ public class Fragment1 extends Fragment {
    void  CheckIfNiexists(final Etudiant e) {
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference().child("Module_users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).
-                child(Group_act.id_module).child("Groupes").child(EtudiantAct.key_g).
+                child(EtudiantAct.ID_MODULE).child("Groupes").child(EtudiantAct.key_g).
                 child("Etudiants");
         rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -254,7 +260,7 @@ public class Fragment1 extends Fragment {
                     e.setParticipation("0");
                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
                     ref.child("Module_users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).
-                            child(Group_act.id_module).child("Groupes").child(EtudiantAct.key_g).
+                            child(EtudiantAct.ID_MODULE).child("Groupes").child(EtudiantAct.key_g).
                             child("Etudiants").child(e.getNI()).setValue(e).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {

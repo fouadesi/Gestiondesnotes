@@ -15,6 +15,7 @@ import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Patterns;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -49,6 +50,7 @@ public class profil_etudiant extends AppCompatActivity {
     String num;
     String ni;
     String participation;
+    String Test1P ,Test2P, Participationp, AbsenceP ;
     TextInputEditText nom_edi, prenom_edi, email_edi, Test1_edi, Test2_edi, absence_edi, num_edi, participation_edi;
     Button btn;
     CircleImageView im;
@@ -59,6 +61,8 @@ public class profil_etudiant extends AppCompatActivity {
     String id_g ;
     DrawerLayout drawer ;
     Toolbar toolbar ;
+    String groupeId ;
+    String module_id ;
 
 
     @Override
@@ -70,6 +74,12 @@ public class profil_etudiant extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar_etudiant_edi);
         ni = getIntent().getExtras().getString("ni");
         num = getIntent().getExtras().getString("num");
+        groupeId = getIntent().getExtras().getString("id_g");
+        module_id = getIntent().getExtras().getString("ID_M");
+        Test1P = getIntent().getExtras().getString("test1");
+        Test2P = getIntent().getExtras().getString("test2");
+        AbsenceP = getIntent().getExtras().getString("absence");
+        Participationp = getIntent().getExtras().getString("participation");
 
         toolbar.setTitle("Numero d'inscription " + ni );
         toolbar.setSubtitle("Nom  :" + nom + " Prenom :" + prenom);
@@ -222,15 +232,36 @@ public class profil_etudiant extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent i =  new Intent(profil_etudiant.this,EtudiantAct.class) ;
+        i.putExtra("ID",groupeId);
+        i.putExtra("ID_M",module_id);
+        i.putExtra("test1",Test1P);
+        i.putExtra("test2",Test2P);
+        i.putExtra("participation",Participationp);
+        i.putExtra("absence",AbsenceP);
+        startActivity(i);
+        finish();
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public void edit_etu(Etudiant e) {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
         ref.child("Module_users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).
-                child(Group_act.id_module).child("Groupes").child(EtudiantAct.key_g).
+                child(Group_act.id_module).child("Groupes").child(groupeId).
                 child("Etudiants").child(e.getNI()).setValue(e).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-
                     final Snackbar s = Snackbar.make(findViewById(android.R.id.content),
                             "Modification  a été effectuée avec succès", Snackbar.LENGTH_LONG);
                     s.setDuration(10000);

@@ -22,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -40,9 +41,14 @@ public class Fragment2 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    String key  ;
 
-    public Fragment2() {
+    public Fragment2(String key) {
+        this.key = key ;
         // Required empty public constructor
+    }
+    public Fragment2() {
+
     }
 
     /**
@@ -75,7 +81,7 @@ public class Fragment2 extends Fragment {
 
     View v  ;
     DatabaseReference db_ref ;
-    static ArrayList<Etudiant> etudiant_users ;
+   static   ArrayList<Etudiant> etudiant_users = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -86,7 +92,7 @@ public class Fragment2 extends Fragment {
 try {
     DatabaseReference db_ref = FirebaseDatabase.getInstance().
             getReference().child("Module_users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).
-            child(Group_act.id_module).child("Groupes").child(EtudiantAct.key_g).child("Etudiants");
+            child(EtudiantAct.ID_MODULE).child("Groupes").child(EtudiantAct.key_g).child("Etudiants");
 
 
     db_ref.addValueEventListener(new ValueEventListener() {
@@ -97,15 +103,24 @@ try {
                 Etudiant m = dataSnapshot1.getValue(Etudiant.class);
                 etudiant_users.add(m);
             }
-            Etudiant_adapter adapter = new Etudiant_adapter(getContext(), etudiant_users);
-            mResultList.setAdapter(adapter);
+            if (getContext() != null ) {
+                Etudiant_adapter adapter = new Etudiant_adapter(getContext(), etudiant_users);
+                mResultList.setAdapter(adapter);
+            }
+            else {
+
+            }
         }
         @Override
         public void onCancelled(@NonNull DatabaseError databaseError) {
         }
     });
-    Etudiant_adapter adapter = new Etudiant_adapter(getContext(), etudiant_users);
-    adapter.notifyDataSetChanged();
+    if (getContext() != null ) {
+        Etudiant_adapter adapter = new Etudiant_adapter(getContext(), etudiant_users);
+        adapter.notifyDataSetChanged();
+    } else {
+
+    }
 
 }catch (Exception e) {
 

@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -54,7 +55,6 @@ public class Group_act extends AppCompatActivity {
          super.onCreate(savedInstanceState);
          setContentView(R.layout.activity_group_act);
         toolbar = findViewById(R.id.toolbar_groupes);
-
         String nom_module = getIntent().getExtras().getString("nom");
         toolbar.setTitle("Groupes");
         toolbar.setSubtitle("Module : " + nom_module );
@@ -79,6 +79,7 @@ public class Group_act extends AppCompatActivity {
          id_module   =  getIntent().getExtras().getString("id");
          listView    =  findViewById(R.id.list_view_groupes);
          add_formule = findViewById(R.id.item_ajouterformule);
+        Toast.makeText(Group_act.this,id_module,Toast.LENGTH_LONG).show();
 
          add_formule.setOnClickListener(new View.OnClickListener() {
             @Override

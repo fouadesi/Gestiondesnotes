@@ -56,7 +56,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
 //        MenuInflater menuInflater = getMenuInflater();
-//        menuInflater.inflate(R.menu.ex_menu, menu);
+//        menuInflater.infl
+//        ate(R.menu.ex_menu, menu);
 //        return true;
 //    }
 

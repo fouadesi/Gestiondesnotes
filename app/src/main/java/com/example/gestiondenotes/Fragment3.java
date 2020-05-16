@@ -34,9 +34,7 @@ public class Fragment3 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
     public Fragment3() {
-        // Required empty public constructor
     }
 
     /**
@@ -77,7 +75,7 @@ public class Fragment3 extends Fragment {
         mResultList = v.findViewById(R.id.listView_fra3);
         DatabaseReference db_ref = FirebaseDatabase.getInstance().
                 getReference().child("Module_users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).
-                child(Group_act.id_module).child("Groupes").child(EtudiantAct.key_g).child("Etudiants");
+                child(EtudiantAct.ID_MODULE).child("Groupes").child(EtudiantAct.key_g).child("Etudiants");
         db_ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -86,15 +84,23 @@ public class Fragment3 extends Fragment {
                     Etudiant m = dataSnapshot1.getValue(Etudiant.class);
                     etudiant_users.add(m);
                 }
-                absence_adapter adapter = new absence_adapter(getContext(), etudiant_users);
-                mResultList.setAdapter(adapter);
+                if (getContext() != null) {
+                    absence_adapter adapter = new absence_adapter(getContext(), etudiant_users);
+                    mResultList.setAdapter(adapter);
+                }
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-        absence_adapter adapter = new absence_adapter(getContext(), etudiant_users);
-        adapter.notifyDataSetChanged();
+        if (getContext() != null ) {
+            absence_adapter adapter = new absence_adapter(getContext(), etudiant_users);
+            adapter.notifyDataSetChanged();
+        }else {
+
+        }
+
         return  v;
     }
 }

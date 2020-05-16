@@ -69,6 +69,7 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
     private TabLayout tabLayout ;
     public static String key_g ;
     DrawerLayout drawer ;
+    static Context context ;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -81,16 +82,33 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
 
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        key_g = getIntent().getExtras().getString("ID");
+    public void onBackPressed() {
+        Intent i = new Intent (EtudiantAct.this,Group_act.class);
+        i.putExtra("id",ID_MODULE);
+        i.putExtra("test1",test1);
+        i.putExtra("test2",test2);
+        i.putExtra("participation",participation);
+        i.putExtra("absence",absence);
+        startActivity(i);
+        finish();
+        super.onBackPressed();
     }
+    static String ID_MODULE ;
+   static String test1, test2,absence,participation ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
+       context = getApplicationContext();
+        test1 = getIntent().getExtras().getString("test1");
+        test2 = getIntent().getExtras().getString("test2");
+        participation = getIntent().getExtras().getString("participation");
+        absence =  getIntent().getExtras().getString("absence") ;
+
+        ID_MODULE = getIntent().getExtras().getString("ID_M");
+        Toast.makeText(EtudiantAct.this,ID_MODULE,Toast.LENGTH_LONG).show();
+        key_g = getIntent().getExtras().getString("ID");
+        Toast.makeText(EtudiantAct.this,key_g,Toast.LENGTH_LONG).show();
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M &&
                 checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         != PackageManager.PERMISSION_GRANTED) {
@@ -124,7 +142,8 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
         fragmentActivity3 = new Fragment3() ;
 
         fragmentActivity4 = new Fragment4();
-       fragmentActivity5 = new Fragment5();
+        fragmentActivity5 = new Fragment5();
+
         tabLayout.setupWithViewPager(viewPager);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);

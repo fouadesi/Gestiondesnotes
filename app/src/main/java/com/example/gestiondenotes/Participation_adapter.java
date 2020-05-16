@@ -84,7 +84,7 @@ public class Participation_adapter extends ArrayAdapter<Etudiant> {
                 e.setParticipation(String.valueOf(i));
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
                 ref.child("Module_users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).
-                        child(Group_act.id_module).child("Groupes").child(EtudiantAct.key_g).
+                        child(EtudiantAct.ID_MODULE).child("Groupes").child(EtudiantAct.key_g).
                         child("Etudiants").child(e.getNI()).setValue(e);
 
             }});
