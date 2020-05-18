@@ -73,18 +73,18 @@ public class Participation_adapter extends ArrayAdapter<Etudiant> {
         return convertView ;
 
     }
-    void Ajouter_par(final Etudiant e) {
+    void Ajouter_par(Etudiant e) {
         MaterialAlertDialogBuilder m = new MaterialAlertDialogBuilder(getContext());
         m.setTitle("Ajouter un point");
         m.setMessage("êtes vous sûr de vouloir ajouter un point ");
         m.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                int i = Integer.parseInt(e.getParticipation()) +1 ;
+                int i = Integer.parseInt(e.getParticipation()) + 1 ;
                 e.setParticipation(String.valueOf(i));
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
                 ref.child("Module_users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).
-                        child(Group_act.id_module).child("Groupes").child(EtudiantAct.key_g).
+                        child(EtudiantAct.ID_MODULE).child("Groupes").child(EtudiantAct.key_g).
                         child("Etudiants").child(e.getNI()).setValue(e);
 
             }});
@@ -97,14 +97,14 @@ public class Participation_adapter extends ArrayAdapter<Etudiant> {
         m.show();
 
     }
-    void Supprimer_par(final Etudiant e) {
+    void Supprimer_par(Etudiant e) {
         MaterialAlertDialogBuilder m = new MaterialAlertDialogBuilder(getContext());
         m.setTitle("Retirer un point de partcipation");
         m.setMessage("êtes vous sûr de vouloir retirer une participation ");
         m.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if (e.getAbscence().equals("0")) {
+                if (e.getParticipation().equals("0")) {
                     Toast.makeText(getContext(),"Impossible",Toast.LENGTH_LONG).show();
                     return;
                 }

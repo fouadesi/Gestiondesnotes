@@ -10,6 +10,8 @@ public class Etudiant {
  private String ID ;
  String picture ;
  private String Participation ;
+ double moy ;
+
 
  public Etudiant(String nom, String prenom, String NI, String abscence, String email, String note1, String note2,  String picture,String Participation) {
   Nom = nom;
@@ -24,9 +26,18 @@ public class Etudiant {
   this.Participation = Participation ;
  }
 
+ public void setMoy(double moy) {
+  this.moy = moy;
+ }
+
  public String getParticipation() {
   return Participation;
  }
+
+ public double getMoy() {
+  return moy;
+ }
+
 
  public void setParticipation(String participation) {
   Participation = participation;

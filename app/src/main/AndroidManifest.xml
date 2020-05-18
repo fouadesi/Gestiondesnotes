@@ -23,11 +23,9 @@
             android:name=".EtudiantAct"
             android:theme="@style/AppTheme" />
         <activity
-            android:label="Modifier le groupe"
             android:name=".Editgroupe"
             android:theme="@style/AppTheme" />
         <activity
-            android:label="La Liste des Groupes"
             android:name=".Group_act"
             android:theme="@style/AppTheme" />
         <activity

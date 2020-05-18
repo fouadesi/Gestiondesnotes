@@ -7,6 +7,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 
 /**
@@ -23,6 +27,7 @@ public class Fragment5 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
 
     public Fragment5() {
         // Required empty public constructor
@@ -59,6 +64,96 @@ public class Fragment5 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_5, container, false);
+        View v =  inflater.inflate(R.layout.fragment_5, container, false);
+      double _test1P = Double.valueOf(EtudiantAct.test1);
+      double _test2P = Double.valueOf(EtudiantAct.test2);
+      double _absencePoi = Double.valueOf(EtudiantAct.absence);
+       double _participationP = Double.valueOf(EtudiantAct.participation);
+        TextView moyTest1 = v.findViewById(R.id.moyTest1);
+        TextView moyTest2 = v.findViewById(R.id.moyTest2);
+        TextView ttAbs = v.findViewById(R.id.nbrAbs);
+        TextView ttPar = v.findViewById(R.id.nbrPar);
+        TextView moy_g = v.findViewById(R.id.moyGen);
+        TextView plus10 = v.findViewById(R.id.plus10);
+        TextView plus15 = v.findViewById(R.id.plus15);
+         int cptAbs = 0  ;
+        for (Etudiant etu : Fragment2.etudiant_users) {
+          cptAbs += Integer.parseInt(etu.getAbscence());
+        }
+        int cptParticipation = 0 ;
+        for (Etudiant etu : Fragment2.etudiant_users) {
+            cptParticipation += Integer.parseInt(etu.getParticipation());
+        }
+        double cptTest1 = 0 ;
+        for (Etudiant etu : Fragment2.etudiant_users) {
+            cptTest1 += Double.parseDouble(etu.getNote1());
+
+        }
+        cptTest1 = cptTest1 / Fragment2.etudiant_users.size();
+        double cptTest2 = 0 ;
+        for (Etudiant etu : Fragment2.etudiant_users) {
+            cptTest2 += Double.parseDouble(etu.getNote2());
+
+        }
+        double moy  = 0 ;
+         for (Etudiant e : Fragment2.etudiant_users) {
+             moy += e.getMoy() ;
+         }
+         cptTest2 = cptTest2 / Fragment2.etudiant_users.size();
+         moy = moy / Fragment2.etudiant_users.size();
+         double cptMoyplus10 = 0 ;
+         for (Etudiant e : Fragment2.etudiant_users) {
+             if (e.getMoy() >= 10) {
+                 cptMoyplus10++;
+             }
+         }
+        double prPlus10 ;
+        if (cptMoyplus10 == 0) {
+             prPlus10 = 0 ;
+         }else {
+            prPlus10 = (cptMoyplus10 / Fragment2.etudiant_users.size()) * 100 ;
+        }
+        prPlus10 = (double) Math.round(prPlus10 * 100) / 100;
+        double cptplus15 = 0 ;
+        for (Etudiant e : Fragment2.etudiant_users) {
+            if (e.getMoy() >= 15) {
+                cptplus15++;
+            }
+        }
+        double prPlus15 ;
+        if (cptplus15 == 0) {
+            prPlus15 = 0 ;
+        }else {
+            prPlus15 = (cptplus15 / Fragment2.etudiant_users.size()) * 100 ;
+        }
+
+        prPlus10 = (double) Math.round(prPlus10 * 100) / 100;
+        prPlus15 = (double) Math.round(prPlus15 * 100) / 100;
+
+
+
+
+        moy = (double) Math.round(moy * 100) / 100;
+        cptTest1= (double) Math.round(cptTest1 * 100) / 100;
+        cptTest2= (double) Math.round(cptTest2 * 100) / 100;
+
+        moyTest1.setText("Moyenne du Test1 : " + cptTest1);
+        moyTest2.setText("Moyenne du Test2 : " + cptTest2);
+        ttAbs.setText("Nombre  total d'absence  : "  + cptAbs);
+        ttPar.setText("Nombre total de participation :" + cptParticipation);
+        moy_g.setText("moyenne générale :"+ moy);
+        plus10.setText("Moyenne +10 :" + prPlus10 +" %");
+        plus15.setText("Moyenne +15 :" + prPlus15 + " %");
+
+
+
+
+
+
+
+
+
+
+        return v ;
     }
 }

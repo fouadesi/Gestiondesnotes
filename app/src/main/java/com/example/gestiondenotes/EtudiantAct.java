@@ -69,6 +69,7 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
     private TabLayout tabLayout ;
     public static String key_g ;
     DrawerLayout drawer ;
+    static Context context ;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -81,23 +82,45 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
 
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        key_g = getIntent().getExtras().getString("ID");
+    public void onBackPressed() {
+        Intent i = new Intent (EtudiantAct.this,Group_act.class);
+        i.putExtra("id",ID_MODULE);
+        i.putExtra("test1",test1);
+        i.putExtra("test2",test2);
+        i.putExtra("participation",participation);
+        i.putExtra("absence",absence);
+        i.putExtra("nomM",nom_module);
+        startActivity(i);
+        finish();
+        super.onBackPressed();
     }
+    static String ID_MODULE ;
+   static String test1, test2,absence,participation ;
+   String nom_module ;
+   static String gr ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
+       context = getApplicationContext();
+        test1 = getIntent().getExtras().getString("test1");
+        test2 = getIntent().getExtras().getString("test2");
+        participation = getIntent().getExtras().getString("participation");
+        absence =  getIntent().getExtras().getString("absence") ;
+        nom_module = getIntent().getExtras().getString("nomM");
+
+
+        ID_MODULE = getIntent().getExtras().getString("ID_M");
+        Toast.makeText(EtudiantAct.this,ID_MODULE,Toast.LENGTH_LONG).show();
+        key_g = getIntent().getExtras().getString("ID");
+        Toast.makeText(EtudiantAct.this,key_g,Toast.LENGTH_LONG).show();
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M &&
                 checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1001);
         }
         setContentView(R.layout.activity_etudiant);
-        String gr = getIntent().getExtras().getString("nom");
+         gr = getIntent().getExtras().getString("nomG");
         toolbar = findViewById(R.id.toolbar_etu);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Étudiants");
@@ -108,6 +131,9 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
 
 
 
@@ -124,22 +150,27 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
         fragmentActivity3 = new Fragment3() ;
 
         fragmentActivity4 = new Fragment4();
-       fragmentActivity5 = new Fragment5();
+        fragmentActivity5 = new Fragment5();
+
         tabLayout.setupWithViewPager(viewPager);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
 
 
         ViewPagerAdapter viewpageradapter = new ViewPagerAdapter(getSupportFragmentManager(),0) ;
 
         viewpageradapter.Addfragment(fragmentActivity2,"Liste des etudiants");
-
-        viewpageradapter.Addfragment(fragmentActivity1,"Ajouter un etudiant");
+        viewpageradapter.Addfragment(fragmentActivity4,"Ajouter La participation");
 
         viewpageradapter.Addfragment(fragmentActivity3,"Marquer les Absence");
+        viewpageradapter.Addfragment(fragmentActivity1,"Ajouter un etudiant");
 
-        viewpageradapter.Addfragment(fragmentActivity4,"Ajouter La participation");
         viewpageradapter.Addfragment(fragmentActivity5,"Statistiques");
+
+
+
+
+
+
+
 
 
         viewPager.setAdapter(viewpageradapter);
@@ -148,12 +179,18 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_ac:
-                onBackPressed();
+                Intent i = new Intent (EtudiantAct.this,MainActivity.class);
+                startActivity(i);
                 finish();
                 break;
             case R.id.deconnecter :
                 FirebaseAuth mAuth = FirebaseAuth.getInstance();
                 mAuth.signOut();
+                if (mAuth.getCurrentUser() == null) {
+                    Intent j =  new Intent (EtudiantAct.this,Login.class);
+                    startActivity(j);
+                    finish();
+                }
             default:
         }
         drawer.closeDrawer(GravityCompat.START);
@@ -164,6 +201,7 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
+
 
 
     public class ViewPagerAdapter extends FragmentPagerAdapter {

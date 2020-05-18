@@ -3,7 +3,10 @@ package com.example.gestiondenotes;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
-
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -29,9 +32,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-
 import com.github.clans.fab.FloatingActionButton ;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -42,7 +43,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private androidx.appcompat.widget.Toolbar toolbar;
     private FirebaseAuth mAuth;
     private FloatingActionButton add_groupe_btn;
@@ -56,7 +57,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
 //        MenuInflater menuInflater = getMenuInflater();
-//        menuInflater.inflate(R.menu.ex_menu, menu);
+//        menuInflater.infl
+//        ate(R.menu.ex_menu, menu);
 //        return true;
 //    }
 
@@ -86,19 +88,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         mAuth = FirebaseAuth.getInstance();
-        toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbarM);
         toolbar.setTitle("Modules");
         toolbar.setSubtitle("Bienvenue");
         setSupportActionBar(toolbar);
-        drawer = findViewById(R.id.drawer);
+        drawer = findViewById(R.id.drawerM);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
 
 
 
@@ -189,22 +191,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
     }
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.nav_ac:
-                Intent i = new Intent(MainActivity.this,MainActivity.class);
-                startActivity(i);
-                finish();
-
-                break;
-            case R.id.deconnecter :
-                FirebaseAuth mAuth = FirebaseAuth.getInstance();
-                mAuth.signOut();
-            default:
-        }
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
@@ -247,7 +233,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
-
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_ac:
+                break;
+            case R.id.deconnecter :
+                FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                mAuth.signOut();
+                if (mAuth.getCurrentUser() == null) {
+                    Intent j =  new Intent (MainActivity.this,Login.class);
+                    startActivity(j);
+                    finish();
+                }
+            default:
+        }
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
 }
 
 

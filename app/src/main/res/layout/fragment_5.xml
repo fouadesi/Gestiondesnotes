@@ -7,8 +7,82 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/moyTest1"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:text="Moyenne du Test1 : "
+        android:layout_marginTop="120dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:background="@drawable/bg3" />
+    <TextView
+        android:clickable="true"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/moyTest2"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:text="Moyenne du Test2 : "
+        android:layout_marginTop="180dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:background="@drawable/bg3" />
+    <TextView
+        android:id="@+id/nbrAbs"
+        android:clickable="true"
+        android:layout_gravity="center_horizontal"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:text="Nombre d'abs total : "
+        android:layout_marginTop="240dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:background="@drawable/bg3" />
+    <TextView
+        android:id="@+id/nbrPar"
+        android:clickable="true"
+        android:layout_gravity="center_horizontal"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:text="Nombre de part total : "
+        android:layout_marginTop="300dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:background="@drawable/bg3" />
+    <TextView
+        android:id="@+id/moyGen"
+        android:clickable="true"
+        android:layout_gravity="center_horizontal"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:text="moyenne générale "
+        android:layout_marginTop="360dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:background="@drawable/bg3" />
+    <TextView
+        android:textSize="20sp"
+        android:background="@drawable/bg3"
+        android:id="@+id/plus10"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="420dp"
+        android:gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="50dp" />
+    <TextView
+        android:textSize="20sp"
+        android:background="@drawable/bg3"
+        android:id="@+id/plus15"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="480dp"
+        android:gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="50dp" />
+
+
+
+
+
+
 
 </FrameLayout>

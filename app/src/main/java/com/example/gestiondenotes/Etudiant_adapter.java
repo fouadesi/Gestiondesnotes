@@ -52,18 +52,31 @@ public class Etudiant_adapter extends ArrayAdapter<Etudiant> {
         }
         final TextView nom_etudiant , email_etudiant , prenom_etudiant,NI,moy_etu;
         moy_etu = convertView.findViewById(R.id.moy_text);
-        double _test1P = Double.valueOf(Group_act._test1);
-        double _test2P = Double.valueOf(Group_act._test2);
-        double _absencePoi = Double.valueOf(Group_act._absence);
+
+        double _test1P = Double.valueOf(EtudiantAct.test1);
+        double _test2P = Double.valueOf(EtudiantAct.test2);
+        double _absencePoi = Double.valueOf(EtudiantAct.absence);
+        double _participationP = Double.valueOf(EtudiantAct.participation);
         double _test1 = Double.valueOf(etudiant.getNote1()) ;
         double _test2 = Double.valueOf(etudiant.getNote2()) ;
         double _absence = Double.valueOf(etudiant.getAbscence()) ;
-        double moyenne = ( (_test1P / 100)  * _test1) +( (_test2P / 100) * _test2 ) - (_absence * _absencePoi);
+        double _participation = Double.valueOf(etudiant.getParticipation());
+        double moyenne = ( (_test1P / 100)  * _test1) +( (_test2P / 100) * _test2 )
+                - (_absence * _absencePoi) + (_participation * _participationP);
         if ( moyenne < 0 ) {
             moy_etu.setText(" Moyenne : " + 0);
             moy_etu.setTextColor(Color.parseColor("#ff1744"));
-        } else {
+
+                etudiant.setMoy(0);
+            }
+        else if (moyenne > 20) {
+            moy_etu.setText("Moyenne : " + 20);
+            etudiant.setMoy(20);
+        }
+         else {
+             etudiant.setMoy(moyenne);
             moy_etu.setText(" Moyenne : " + moyenne);
+
         }
         ImageButton supprimer_etudiant ;
          CircleImageView photo_etudiant ;
@@ -100,6 +113,13 @@ public class Etudiant_adapter extends ArrayAdapter<Etudiant> {
             @Override
             public void onClick(View v) {
                 Intent i  = new Intent(getContext(),profil_etudiant.class);
+                i.putExtra("nomG",EtudiantAct.gr);
+                i.putExtra("test1P",EtudiantAct.test1);
+                i.putExtra("test2P",EtudiantAct.test2);
+                i.putExtra("participationP",EtudiantAct.participation);
+                i.putExtra("absenceP",EtudiantAct.absence);
+                i.putExtra("id_g",EtudiantAct.key_g);
+                i.putExtra("ID_M",EtudiantAct.ID_MODULE);
                 i.putExtra("nom",etudiant.getNom());
                 i.putExtra("prenom",etudiant.getPrenom());
                 i.putExtra("email",etudiant.getEmail());
@@ -125,7 +145,7 @@ public class Etudiant_adapter extends ArrayAdapter<Etudiant> {
                                 DatabaseReference db_ref = FirebaseDatabase.getInstance().getReference();
                                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
                                 ref.child("Module_users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).
-                                        child(Group_act.id_module).child("Groupes").child(EtudiantAct.key_g).
+                                        child(EtudiantAct.ID_MODULE).child("Groupes").child(EtudiantAct.key_g).
                                         child("Etudiants").child(etudiant.getNI()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {

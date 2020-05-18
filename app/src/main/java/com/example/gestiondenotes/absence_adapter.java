@@ -61,7 +61,7 @@ public class absence_adapter  extends ArrayAdapter<Etudiant> {
            }
        });
         Glide.with(getContext()).load(etudiant.getPicture()).into(profil_image_absence);
-           if (Integer.parseInt(etudiant.getAbscence())> 2) {
+           if (Integer.parseInt(etudiant.getAbscence()) > 2) {
                profil_image_absence.setBorderColor(Color.parseColor("#ff1744"));
            }
         name_absence.setText("Nom : " + etudiant.getNom());
@@ -85,7 +85,7 @@ public class absence_adapter  extends ArrayAdapter<Etudiant> {
                DatabaseReference db_ref = FirebaseDatabase.getInstance().getReference();
                DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
                ref.child("Module_users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).
-                       child(Group_act.id_module).child("Groupes").child(EtudiantAct.key_g).
+                       child(EtudiantAct.ID_MODULE).child("Groupes").child(EtudiantAct.key_g).
                        child("Etudiants").child(e.getNI()).setValue(e);
 
            }});
@@ -100,8 +100,8 @@ public class absence_adapter  extends ArrayAdapter<Etudiant> {
    }
  void Supprimer_abs(final Etudiant e) {
      MaterialAlertDialogBuilder m = new MaterialAlertDialogBuilder(getContext());
-     m.setTitle("Ajouter une absence");
-     m.setMessage("êtes vous sûr de vouloir ajouter une absence ");
+     m.setTitle("Supprimer une absence");
+     m.setMessage("êtes vous sûr de vouloir supprimer une absence ");
      m.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
          @Override
          public void onClick(DialogInterface dialog, int which) {
@@ -115,7 +115,7 @@ public class absence_adapter  extends ArrayAdapter<Etudiant> {
                  DatabaseReference db_ref = FirebaseDatabase.getInstance().getReference();
                  DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
                  ref.child("Module_users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).
-                         child(Group_act.id_module).child("Groupes").child(EtudiantAct.key_g).
+                         child(EtudiantAct.ID_MODULE).child("Groupes").child(EtudiantAct.key_g).
                          child("Etudiants").child(e.getNI()).setValue(e);
              } else {
                  final Snackbar s = Snackbar.make(v,
