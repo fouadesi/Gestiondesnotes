@@ -96,7 +96,7 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
     }
     static String ID_MODULE ;
    static String test1, test2,absence,participation ;
-   String nom_module ;
+  static String nom_module ;
    static String gr ;
 
     @Override
@@ -111,9 +111,7 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
 
 
         ID_MODULE = getIntent().getExtras().getString("ID_M");
-        Toast.makeText(EtudiantAct.this,ID_MODULE,Toast.LENGTH_LONG).show();
         key_g = getIntent().getExtras().getString("ID");
-        Toast.makeText(EtudiantAct.this,key_g,Toast.LENGTH_LONG).show();
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M &&
                 checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         != PackageManager.PERMISSION_GRANTED) {

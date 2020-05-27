@@ -86,6 +86,7 @@ public class profil_etudiant extends AppCompatActivity implements NavigationView
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    String nomM ;
 
 
     @Override
@@ -96,6 +97,8 @@ public class profil_etudiant extends AppCompatActivity implements NavigationView
         nom = getIntent().getExtras().getString("nom");
         prenom = getIntent().getExtras().getString("prenom");
         toolbar = findViewById(R.id.toolbar_etudiant_edi);
+        nomM = getIntent().getExtras().getString("nomM");
+
         ni = getIntent().getExtras().getString("ni");
         num = getIntent().getExtras().getString("num");
         groupeId = getIntent().getExtras().getString("id_g");
@@ -267,6 +270,7 @@ public class profil_etudiant extends AppCompatActivity implements NavigationView
         i.putExtra("participation",Participationp);
         i.putExtra("absence",AbsenceP);
         i.putExtra("nomG",nomG);
+        i.putExtra("nomM",nomM);
         startActivity(i);
         finish();
 

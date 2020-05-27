@@ -113,8 +113,6 @@ public class Group_act extends AppCompatActivity implements NavigationView.OnNav
          id_module   =  getIntent().getExtras().getString("id");
          listView    =  findViewById(R.id.list_view_groupes);
          add_formule = findViewById(R.id.item_ajouterformule);
-        Toast.makeText(Group_act.this,id_module,Toast.LENGTH_LONG).show();
-
          add_formule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
