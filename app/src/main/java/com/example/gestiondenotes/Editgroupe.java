@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -79,7 +81,7 @@ public class Editgroupe extends AppCompatActivity implements NavigationView.OnNa
         navigationView.setNavigationItemSelectedListener(this);
         nom_groupe = findViewById(R.id.nom_du_groupe_edit);
         niveau_groupe =findViewById(R.id.niveau_du_groupe_edit);
-        niveau = getIntent().getExtras().getString("niveau") ;
+        niveau = getIntent().getExtras().getString("niveau");
         id_groupe = getIntent().getExtras().getString("id");
         nom_groupe.setText(nom);
         niveau_groupe.setText(niveau);
@@ -96,13 +98,72 @@ public class Editgroupe extends AppCompatActivity implements NavigationView.OnNa
                     gr.setId(id_groupe);
                     db_ref = FirebaseDatabase.getInstance().getReference();
                     db_ref.child("Module_users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child
-                            (Group_act.id_module).child("Groupes").child(id_groupe).setValue(gr).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            (Group_act.id_module).child("Groupes").child(id_groupe).child("niveau").setValue(niveau).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            onBackPressed();
+                            final Snackbar s = Snackbar.make(findViewById(android.R.id.content),
+                                    "niveau modifier avec succee", Snackbar.LENGTH_LONG);
+                            s.setDuration(10000);
+                            s.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
+                            s.setBackgroundTint(getResources().getColor(R.color.colorAccent));
+                            s.setTextColor(getResources().getColor(R.color.colorPrimary));
+                            s.setActionTextColor(getResources().getColor(R.color.colorPrimary));
+                            s.setAction("OK", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    s.dismiss();
+                                }
+                            });
+                            s.show();
                         }else {
-                            Toast.makeText(Editgroupe.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show(); } }
+                            final Snackbar s = Snackbar.make(findViewById(android.R.id.content),
+                                    task.getException().getMessage(), Snackbar.LENGTH_LONG);
+                            s.setDuration(10000);
+                            s.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
+                            s.setBackgroundTint(getResources().getColor(R.color.colorAccent));
+                            s.setTextColor(getResources().getColor(R.color.colorPrimary));
+                            s.setActionTextColor(getResources().getColor(R.color.colorPrimary));
+                            s.setAction("OK", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    s.dismiss();
+                                }
+                            });} }
+                    });
+                    db_ref.child("Module_users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child
+                            (Group_act.id_module).child("Groupes").child(id_groupe).child("nom").setValue(nom).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                final Snackbar s = Snackbar.make(findViewById(android.R.id.content),
+                                        "nom modifier avec succees", Snackbar.LENGTH_LONG);
+                                s.setDuration(10000);
+                                s.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
+                                s.setBackgroundTint(getResources().getColor(R.color.colorAccent));
+                                s.setTextColor(getResources().getColor(R.color.colorPrimary));
+                                s.setActionTextColor(getResources().getColor(R.color.colorPrimary));
+                                s.setAction("OK", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        s.dismiss();
+                                    }
+                                });
+                                s.show();
+                            }else {
+                                final Snackbar s = Snackbar.make(findViewById(android.R.id.content),
+                                        task.getException().getMessage(), Snackbar.LENGTH_LONG);
+                                s.setDuration(10000);
+                                s.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
+                                s.setBackgroundTint(getResources().getColor(R.color.colorAccent));
+                                s.setTextColor(getResources().getColor(R.color.colorPrimary));
+                                s.setActionTextColor(getResources().getColor(R.color.colorPrimary));
+                                s.setAction("OK", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        s.dismiss();
+                                    }
+                                });} }
                     });
                 }
 

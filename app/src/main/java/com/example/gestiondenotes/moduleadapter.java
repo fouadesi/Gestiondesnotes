@@ -70,7 +70,8 @@ public class moduleadapter extends ArrayAdapter<Module_users> {
                 i.putExtra("coeff",module_users.getCoef());
                 i.putExtra("note eliminatoire",module_users.getNote_eliminatoire());
                 i.putExtra("id",module_users.getId());
-                getContext().startActivity(i); }});
+                getContext().startActivity(i);
+            }});
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

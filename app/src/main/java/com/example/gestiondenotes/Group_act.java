@@ -44,10 +44,10 @@ public class Group_act extends AppCompatActivity implements NavigationView.OnNav
     static String _test1 ;static  String _test2 ;
   static   String _participation ;
   static  String _absence;
-     String test1 ;
-     String test2 ;
-     String participation ;
-     String absence ;
+   static  String test1 ;
+   static  String test2 ;
+    static String participation ;
+    static String absence ;
     private DrawerLayout drawer;
     private Toolbar toolbar ;
     static String nom_module ;
@@ -101,15 +101,12 @@ public class Group_act extends AppCompatActivity implements NavigationView.OnNav
         _test2 = getIntent().getExtras().getString("test2");
         _participation = getIntent().getExtras().getString("participation");
         _absence = getIntent().getExtras().getString("absence");
-
-
         test1 = getIntent().getExtras().getString("test1");
         test2 = getIntent().getExtras().getString("test2");
         participation = getIntent().getExtras().getString("participation");
     absence = getIntent().getExtras().getString("absence");
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
          id_module   =  getIntent().getExtras().getString("id");
          listView    =  findViewById(R.id.list_view_groupes);
          add_formule = findViewById(R.id.item_ajouterformule);
@@ -117,7 +114,7 @@ public class Group_act extends AppCompatActivity implements NavigationView.OnNav
             @Override
             public void onClick(View v) {
                 MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(Group_act.this);
-                builder.setTitle("Ajouter une Formule");
+                builder.setTitle("Modifier la Formule");
                 builder.setIcon(R.drawable.groupe_blackicon);
                 builder.setBackground(getResources().getDrawable(R.drawable.design_alert_dialog));
                 final View mview = getLayoutInflater().inflate(R.layout.add_formule, null);
@@ -192,7 +189,7 @@ public class Group_act extends AppCompatActivity implements NavigationView.OnNav
                                  participation = Participation_edi  ;
 
                                  final Snackbar s = Snackbar.make(findViewById(android.R.id.content),
-                                         "Bien inserer", Snackbar.LENGTH_LONG);
+                                         "Formule modifier", Snackbar.LENGTH_LONG);
                                  s.setDuration(10000);
                                  s.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
                                  s.setBackgroundTint(getResources().getColor(R.color.colorAccent));
@@ -314,7 +311,7 @@ public class Group_act extends AppCompatActivity implements NavigationView.OnNav
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    final Snackbar s = Snackbar.make(findViewById(android.R.id.content), "Module est inserer", Snackbar.LENGTH_LONG);
+                    final Snackbar s = Snackbar.make(findViewById(android.R.id.content), "Groupe est ajoute", Snackbar.LENGTH_LONG);
                     s.setDuration(10000);
                     s.setActionTextColor(getResources().getColor(R.color.colorAccent));
                     s.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);

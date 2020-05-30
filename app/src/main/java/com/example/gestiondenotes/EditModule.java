@@ -63,8 +63,6 @@ public class EditModule extends AppCompatActivity implements NavigationView.OnNa
         new_nom = nom_module_edit_text.getText().toString();
         new_coef = coef_du_module_edit_text.getText().toString();
         new_note = note_eliminatoire_du_module_edit_text.getText().toString();
-
-
         if (new_nom.equals(get_nom) && new_coef.equals(get_coeff) && new_note.equals(get_note_elim)) {
             final Snackbar s = Snackbar.make(findViewById(android.R.id.content),
               "Vous devez effectuez un changement", Snackbar.LENGTH_LONG);
@@ -94,17 +92,20 @@ public class EditModule extends AppCompatActivity implements NavigationView.OnNa
             s.setAction("OK", new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                 }
             });
             s.show();
             return;
         }
-        Module_users module_users = new Module_users(new_nom,
-                new_note, new_coef);
-        module_users.setId(id);
         ref.child("Module_users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).
-                child(id).setValue(module_users).addOnCompleteListener(new OnCompleteListener<Void>() {
+                child(id).child("note_eliminatoire").setValue(new_note);
+
+        ref.child("Module_users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).
+                child(id).child("coef").setValue(new_coef);
+
+        ref.child("Module_users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).
+                child(id).child("nom").setValue(new_nom).addOnCompleteListener(
+                        new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
@@ -131,6 +132,7 @@ public class EditModule extends AppCompatActivity implements NavigationView.OnNa
         });
 
     }
+
 
 
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

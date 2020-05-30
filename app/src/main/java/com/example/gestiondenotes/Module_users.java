@@ -7,7 +7,7 @@ public class Module_users {
   private String  note_eliminatoire ;
   private String coef;
 
-  Formule formule = new Formule("","","","");
+  Formule formule = new Formule("0","0","0","0");
 
     public void setFormule(Formule formule) {
         this.formule = formule;

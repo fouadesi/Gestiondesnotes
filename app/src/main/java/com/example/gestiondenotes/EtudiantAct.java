@@ -108,8 +108,6 @@ public class EtudiantAct extends AppCompatActivity implements NavigationView.OnN
         participation = getIntent().getExtras().getString("participation");
         absence =  getIntent().getExtras().getString("absence") ;
         nom_module = getIntent().getExtras().getString("nomM");
-
-
         ID_MODULE = getIntent().getExtras().getString("ID_M");
         key_g = getIntent().getExtras().getString("ID");
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M &&

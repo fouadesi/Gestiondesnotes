@@ -47,10 +47,10 @@ public class groupesadapter extends ArrayAdapter<Groupes> {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getContext(), Editgroupe.class);
-                i.putExtra("test1",Group_act._test1);
-                i.putExtra("test2",Group_act._test2);
-                i.putExtra("participation",Group_act._participation);
-                i.putExtra("absence",Group_act._absence);
+                i.putExtra("test1",Group_act.test1);
+                i.putExtra("test2",Group_act.test2);
+                i.putExtra("participation",Group_act.participation);
+                i.putExtra("absence",Group_act.absence);
                 i.putExtra("nomG",groupe_users.getNom());
                 i.putExtra("nomM",Group_act.nom_module);
                 i.putExtra("ID",groupe_users.getId());

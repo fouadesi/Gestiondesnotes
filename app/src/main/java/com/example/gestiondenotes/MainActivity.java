@@ -100,10 +100,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-
-
-
         // tester l'utilisateur si il est connecte
         if (mAuth.getCurrentUser() == null) {
             Intent i = new Intent(MainActivity.this, Login.class);
@@ -157,8 +153,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         final String Nom = Nom_du_module.getText().toString().trim();
                         final String Noteelim = Note_eliminatoire_du_module.getText().toString().trim();
                         final String coeff = Coefficient_du_module.getText().toString().trim();
-
-
                         if (Nom.isEmpty() || Noteelim.isEmpty() || coeff.isEmpty()) {
                             final Snackbar s = Snackbar.make(findViewById(android.R.id.content),
                                     "Vous devez remplir les champs", Snackbar.LENGTH_LONG);
@@ -212,9 +206,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    final Snackbar s = Snackbar.make(findViewById(android.R.id.content), "Groupe est ajouté", Snackbar.LENGTH_LONG);
+                    final Snackbar s = Snackbar.make(findViewById(android.R.id.content),
+                            "Module est ajouté", Snackbar.LENGTH_LONG);
                     s.setDuration(5000);
-                    s.setActionTextColor(getResources().getColor(R.color.colorAccent));
+                    s.setActionTextColor(getResources().getColor(R.color.colorPrimary));
                     s.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
                     s.setBackgroundTint(getResources().getColor(R.color.colorAccent));
                     s.setTextColor(getResources().getColor(R.color.colorPrimary));
